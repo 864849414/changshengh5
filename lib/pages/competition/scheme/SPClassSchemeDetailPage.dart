@@ -24,6 +24,8 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:async';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
+import '../SPClassMatchDetailPage.dart';
+
 
 class SPClassSchemeDetailPage extends StatefulWidget {
   SPClassSchemeDetailEntity spProSchemeDetail;
@@ -415,7 +417,8 @@ class SPClassSchemeDetailPageState extends State<SPClassSchemeDetailPage> {
                     SPClassNavigatorUtils.spFunPushRoute(
                         context,
                         SPClassExpertDetailPage(info));
-                  }));
+                  },onError: (e){},spProOnProgress: (v){}
+                  ));
         }
       },
       child: Row(
@@ -710,7 +713,7 @@ class SPClassSchemeDetailPageState extends State<SPClassSchemeDetailPage> {
 
         SPClassApiManager.spFunGetInstance().spFunSportMatchData<SPClassGuessMatchInfo>(loading: true,context: context,spProGuessMatchId:widget.spProSchemeDetail.scheme!.spProGuessMatchId,dataKeys: "guess_match",spProCallBack: SPClassHttpCallBack(
             spProOnSuccess: (result) async {
-              // SPClassNavigatorUtils.spFunPushRoute(context, SPClassMatchDetailPage(result,spProMatchType:"guess_match_id",spProInitIndex: 1,));
+              SPClassNavigatorUtils.spFunPushRoute(context, SPClassMatchDetailPage(result,spProMatchType:"guess_match_id",spProInitIndex: 1,));
             },onError: (e){},spProOnProgress: (v){}
         ) );
 
