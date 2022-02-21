@@ -40,7 +40,7 @@ class SPClassVideoLoginPageState extends State<SPClassVideoLoginPage>
   var spProWxListen;
   static bool spProOneLogin = false;
   int spProCurrentSecond = 0;
-  late Timer spProTimer;
+  Timer ?spProTimer;
 
   late TextEditingController _textEditingController;
   @override
@@ -89,7 +89,7 @@ class SPClassVideoLoginPageState extends State<SPClassVideoLoginPage>
     _videoPlayerController.dispose();
     WidgetsBinding.instance!.removeObserver(this);
     if (spProTimer != null) {
-      spProTimer.cancel();
+      spProTimer?.cancel();
     }
 
     ///备注APP使用

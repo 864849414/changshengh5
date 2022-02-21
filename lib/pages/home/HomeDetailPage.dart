@@ -20,11 +20,9 @@ import 'package:changshengh5/widgets/SPClassNestedScrollViewRefreshBallStyle.dar
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/material.dart' hide NestedScrollView;
-import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-// import '../../old_extended_nested_scroll_view.dart';
-// import '../../nested_scroll_view_inner_scroll_position_key_widget.dart';
+import '../../widgets/nested_scroll_view_inner_scroll_position_key_widget.dart';
 import 'SPClassHomeSchemeList.dart';
 import 'SPClassTabHotExpert.dart';
 

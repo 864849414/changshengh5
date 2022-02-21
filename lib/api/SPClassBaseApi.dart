@@ -100,17 +100,13 @@ class SPClassBaseApi{
           }else{
             response  =await httpManager.get(url!,queryParameters: params,cancelToken:cancelToken,);
             // try {
-            //   print('哈哈哈5');
             //   await httpManager.get(url!,queryParameters: params,cancelToken:cancelToken);
             // } on DioError catch (e) {
-            //   print('哈哈哈6');
             //   if (e.response != null) {
-            //     print('哈哈哈7');
             //     print(e.response?.data);
             //     print(e.response?.headers);
             //     print(e.response?.requestOptions);
             //   } else {
-            //     print('哈哈哈8');
             //     // Something happened in setting up or sending the request that triggered an Error
             //     print(e.requestOptions);
             //     print(e.message);

@@ -55,59 +55,27 @@ class SPClassBaseModelEntity {
 
 
   /// APP
-  T spFunGenerateOBJ<T>(json,{dynamic object}) {
-    print('GenerateOBJ  $T');
-    if (T.toString() == this.runtimeType.toString()) {
-      return this as T;
-    } else if (T.toString() == "SPClassSchemeDetailEntity") {
-      return SPClassSchemeDetailEntity.fromJson(json) as T;
-    }else if (T.toString() == "SPClassSsOddsList") {
-      return SPClassSsOddsList.fromJson(json) as T;
-    } else if (T.toString() == "SPClassAnylizeMatchList") {
-      return SPClassAnylizeMatchList.fromJson(json) as T;
-    } else if (T.toString() == "SPClassCreatOrderEntity") {
-      return SPClassCreatOrderEntity.fromJson(json) as T;
-    } else if (T.toString() == "SPClassExpertListEntity") {  //web端多个 \$
-      return SPClassExpertListEntity.fromJson(json) as T;
-    }else if (T.toString() == "SPClassSchemeListEntity") {
-      return SPClassSchemeListEntity.fromJson(json) as T;
-    } else if (T.toString() == "SPClassUserSchemeListEntity") {
-      return SPClassUserSchemeListEntity.fromJson(json) as T;
-    } else if (T.toString() == "SPClassOddsHistoryListEntity") {
-      return SPClassOddsHistoryListEntity.fromJson(json) as T;
-    }else if (T.toString() == "SPClassShowPListEntity") {
-      return SPClassShowPListEntity.fromJson(json) as T;
-    } else if (object!=null) {
-      object.fromJson(json);
-      return object as T;
-    }
-    else {
-      return JsonConvert.fromJsonAsT<T>(json)!;
-    }
-  }
-
-  ///WEB
-  //  T spFunGenerateOBJ<T>(json,{dynamic object}) {
-  //    print('GenerateOBJ  $T');
+  // T spFunGenerateOBJ<T>(json,{dynamic object}) {
+  //   print('GenerateOBJ  $T');
   //   if (T.toString() == this.runtimeType.toString()) {
   //     return this as T;
-  //   } else if (T.toString() == "SPClassSchemeDetailEntity\$") {
+  //   } else if (T.toString() == "SPClassSchemeDetailEntity") {
   //     return SPClassSchemeDetailEntity.fromJson(json) as T;
-  //   }else if (T.toString() == "SPClassSsOddsList\$") {
+  //   }else if (T.toString() == "SPClassSsOddsList") {
   //     return SPClassSsOddsList.fromJson(json) as T;
-  //   } else if (T.toString() == "SPClassAnylizeMatchList\$") {
+  //   } else if (T.toString() == "SPClassAnylizeMatchList") {
   //     return SPClassAnylizeMatchList.fromJson(json) as T;
-  //   } else if (T.toString() == "SPClassCreatOrderEntity\$") {
+  //   } else if (T.toString() == "SPClassCreatOrderEntity") {
   //     return SPClassCreatOrderEntity.fromJson(json) as T;
-  //   } else if (T.toString() == "SPClassExpertListEntity\$") {  //web端多个 \$
+  //   } else if (T.toString() == "SPClassExpertListEntity") {  //web端多个 \$
   //     return SPClassExpertListEntity.fromJson(json) as T;
-  //   }else if (T.toString() == "SPClassSchemeListEntity\$") {
+  //   }else if (T.toString() == "SPClassSchemeListEntity") {
   //     return SPClassSchemeListEntity.fromJson(json) as T;
-  //   } else if (T.toString() == "SPClassUserSchemeListEntity\$") {
+  //   } else if (T.toString() == "SPClassUserSchemeListEntity") {
   //     return SPClassUserSchemeListEntity.fromJson(json) as T;
-  //   } else if (T.toString() == "SPClassOddsHistoryListEntity\$") {
+  //   } else if (T.toString() == "SPClassOddsHistoryListEntity") {
   //     return SPClassOddsHistoryListEntity.fromJson(json) as T;
-  //   }else if (T.toString() == "SPClassShowPListEntity\$") {
+  //   }else if (T.toString() == "SPClassShowPListEntity") {
   //     return SPClassShowPListEntity.fromJson(json) as T;
   //   } else if (object!=null) {
   //     object.fromJson(json);
@@ -117,5 +85,37 @@ class SPClassBaseModelEntity {
   //     return JsonConvert.fromJsonAsT<T>(json)!;
   //   }
   // }
+
+  ///WEB
+   T spFunGenerateOBJ<T>(json,{dynamic object}) {
+     print('GenerateOBJ  $T');
+    if (T.toString() == this.runtimeType.toString()) {
+      return this as T;
+    } else if (T.toString() == "SPClassSchemeDetailEntity\$") {
+      return SPClassSchemeDetailEntity.fromJson(json) as T;
+    }else if (T.toString() == "SPClassSsOddsList\$") {
+      return SPClassSsOddsList.fromJson(json) as T;
+    } else if (T.toString() == "SPClassAnylizeMatchList\$") {
+      return SPClassAnylizeMatchList.fromJson(json) as T;
+    } else if (T.toString() == "SPClassCreatOrderEntity\$") {
+      return SPClassCreatOrderEntity.fromJson(json) as T;
+    } else if (T.toString() == "SPClassExpertListEntity\$") {  //web端多个 \$
+      return SPClassExpertListEntity.fromJson(json) as T;
+    }else if (T.toString() == "SPClassSchemeListEntity\$") {
+      return SPClassSchemeListEntity.fromJson(json) as T;
+    } else if (T.toString() == "SPClassUserSchemeListEntity\$") {
+      return SPClassUserSchemeListEntity.fromJson(json) as T;
+    } else if (T.toString() == "SPClassOddsHistoryListEntity\$") {
+      return SPClassOddsHistoryListEntity.fromJson(json) as T;
+    }else if (T.toString() == "SPClassShowPListEntity\$") {
+      return SPClassShowPListEntity.fromJson(json) as T;
+    } else if (object!=null) {
+      object.fromJson(json);
+      return object as T;
+    }
+    else {
+      return JsonConvert.fromJsonAsT<T>(json)!;
+    }
+  }
 
 }
