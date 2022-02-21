@@ -571,7 +571,7 @@ class SPClassExpertDetailPageState extends State<SPClassExpertDetailPage> with T
                isVisible: false,
                overflowMode: LegendItemOverflowMode.wrap),
            primaryXAxis: CategoryAxis(
-                labelStyle:TextStyle(fontSize: sp(8)),
+                labelStyle:TextStyle(fontSize: sp(12)),
                labelPlacement: LabelPlacement.onTicks,
                majorGridLines: MajorGridLines(width: 0.4)),
            primaryYAxis: NumericAxis(
@@ -579,7 +579,7 @@ class SPClassExpertDetailPageState extends State<SPClassExpertDetailPage> with T
                labelFormat: '{value}%',
                interval: 25,
                axisLine: AxisLine(width: 0),
-               labelStyle: TextStyle(fontSize: sp(8)),
+               labelStyle: TextStyle(fontSize: sp(12)),
                majorTickLines: MajorTickLines(color: Colors.transparent)),
            series: <AreaSeries<SPClassChartData, String>>[
              AreaSeries<SPClassChartData, String>(

@@ -113,7 +113,7 @@ class SPClassHomeRangkingListState extends State<SPClassHomeRangkingList> with A
                   Positioned(
                     left: 0,
                     right: 0,
-                    bottom: -10,
+                    bottom: -width(8),
                     child: Container(
                       alignment: Alignment.center,
                       width: width(46),
@@ -138,7 +138,7 @@ class SPClassHomeRangkingListState extends State<SPClassHomeRangkingList> with A
                       (SPClassMatchDataUtils.spFunCalcBestCorrectRate(expertItem.spProLast10Result!)*100).toStringAsFixed(0)+
                           "%": (double.tryParse(expertItem.spProRecentProfitSum!)!*100).toStringAsFixed(0)+
                           "%"
-                        ,style: TextStyle(fontSize: sp(9),color: Colors.white,fontWeight: FontWeight.w500),maxLines: 1,),
+                        ,style: TextStyle(fontSize: sp(12),color: Colors.white,fontWeight: FontWeight.w500),maxLines: 1,),
                     ),
                   )
                 ],
