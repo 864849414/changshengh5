@@ -55,7 +55,7 @@ class SPClassBaseApi{
     CancelToken? cancelToken;
     try{
       Map<String, dynamic> params ;
-    if(isBaseParams!){
+      if(isBaseParams!){
         params=  spFunGetBasicParams();
     }else{
       params=  spFunGetCommonParams();}
@@ -261,15 +261,15 @@ class SPClassBaseApi{
     basicParam["oauth_token"] =SPClassApplicaion.spProUserLoginInfo==null? "":SPClassApplicaion.spProUserLoginInfo?.spProOauthToken??'';
     basicParam["app_id"] =AppId;
     basicParam["channel_id"] =ChannelId;
-    basicParam["did"] ='';
-    basicParam["device"] ='XIAOMI';
+    basicParam["did"] ='e1652ed8-d5c6-4858-be38-f9f6d3242fb5';
+    basicParam["device"] ='M2004J7AC';
     basicParam["os"] ="android";
-    basicParam["app_version"] ='';
-    basicParam["android_id"] ="";
-    basicParam["manufacturer"] = "apple";
-    basicParam["sydid"] = '';
-    basicParam["os_version"] ='';
-    basicParam["mac"] ='';
+    basicParam["app_version"] ='3.0.1';
+    basicParam["android_id"] ="fa462f316d05e99b";
+    basicParam["manufacturer"] = "xiaomi";
+    basicParam["sydid"] = '440fc3535f24d276cbd0a2cd15dca44f';
+    basicParam["os_version"] ='10';
+    basicParam["mac"] ='02:00:00:00:00:00';
     return basicParam;
   }
 

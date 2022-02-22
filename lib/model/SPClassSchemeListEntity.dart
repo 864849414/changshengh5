@@ -4,15 +4,15 @@ class SPClassSchemeListEntity {
 	SPClassSchemeListEntity({this.spProSchemeList});
 
 	SPClassSchemeListEntity.fromJson(Map<String, dynamic> json) {
-		if (json["scheme_list"] != null) {
-			spProSchemeList = [];(json["scheme_list"] as List).forEach((v) { spProSchemeList!.add(new SPClassSchemeListSchemeList.fromJson(v)); });
+    if (json["scheme_list"] != null) {
+			spProSchemeList = [];(json["scheme_list"] as List).forEach((v) { spProSchemeList!.add(SPClassSchemeListSchemeList.fromJson(v)); });
 		}
-	}
+  }
 
 	Map<String, dynamic> toJson() {
 		final Map<String, dynamic> data = new Map<String, dynamic>();
-		if (this.spProSchemeList != null) {
-      data["scheme_list"] =  this.spProSchemeList!.map((v) => v.toJson()).toList();
+		if (spProSchemeList != null) {
+      data["scheme_list"] =  spProSchemeList!.map((v) => v.toJson()).toList();
     }
 		return data;
 	}
