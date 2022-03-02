@@ -26,7 +26,7 @@ class SPClassNetConfig {
     return  SPClassApplicaion.spProDEBUG? SPClassNetConfig.BASE_URL_DEBUG:SPClassNetConfig.BASE_URL_RELEASE;//Platform.isIOS ? BASE_URL_IOS_RELEASE: SPClassNetConfig.BASE_URL_RELEASE;
   }
   static spFunGetBasicUrlByValue(bool isDemo) {
-    return  isDemo? SPClassNetConfig.BASE_URL_DEBUG: SPClassNetConfig.BASE_URL_RELEASE; //Platform.isIOS ? BASE_URL_IOS_RELEASE: SPClassNetConfig.BASE_URL_RELEASE;
+    return  SPClassApplicaion.spProDEBUG?SPClassNetConfig.BASE_URL_DEBUG: SPClassNetConfig.BASE_URL_RELEASE; //Platform.isIOS ? BASE_URL_IOS_RELEASE: SPClassNetConfig.BASE_URL_RELEASE;
   }
   static spFunGetImageUrl() {
     return  SPClassApplicaion.spProDEBUG? SPClassNetConfig.IMAGE_URL_DEBUG:IMAGE_URL_RELEASE;

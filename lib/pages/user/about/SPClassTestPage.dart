@@ -38,7 +38,7 @@ class SPClassTestPageState extends State<SPClassTestPage>{
                children: <Widget>[
                  Expanded(
                    child:GestureDetector(
-                     behavior: HitTestBehavior.opaque,
+                     behavior: HitTestBehavior.translucent,
                      child: Row(
                        children: <Widget>[
                          Text("测试坏境"),
@@ -59,7 +59,7 @@ class SPClassTestPageState extends State<SPClassTestPage>{
                  ),
                  Expanded(
                    child:GestureDetector(
-                     behavior: HitTestBehavior.opaque,
+                     behavior: HitTestBehavior.translucent,
                      child: Row(
                        children: <Widget>[
                          Text("正式环境"),

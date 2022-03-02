@@ -5,7 +5,6 @@ import 'package:changshengh5/api/SPClassNetConfig.dart';
 import 'package:changshengh5/app/SPClassApplicaion.dart';
 import 'package:changshengh5/untils/SPClassCommonMethods.dart';
 import 'package:changshengh5/untils/SPClassImageUtil.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -67,23 +67,23 @@ class SPClassAboutUsPageState extends State<SPClassAboutUsPage>{
                   ),
                 ),
                 onTap: (){
-                  // if(spProPressTime==null){
-                  //   spProPressTime=DateTime.now();
-                  //   spProDebugIndex=1;
-                  //   return;
-                  // }
-                  // spProDebugIndex++;
-                  // if(timer!=null){
-                  //   timer?.cancel();
-                  // }
-                  // timer= Timer(Duration(seconds: 2), (){
-                  //   spProPressTime=null;
-                  // });
-                  // if(spProDebugIndex==5){
-                  //   spProDebugIndex=0;
-                  //   spProPressTime=null;
-                  //   SPClassNavigatorUtils.spFunPushRoute(context,SPClassTestPage());
-                  // }
+                  if(spProPressTime==null){
+                    spProPressTime=DateTime.now();
+                    spProDebugIndex=1;
+                    return;
+                  }
+                  spProDebugIndex++;
+                  if(timer!=null){
+                    timer?.cancel();
+                  }
+                  timer= Timer(Duration(seconds: 2), (){
+                    spProPressTime=null;
+                  });
+                  if(spProDebugIndex==5){
+                    spProDebugIndex=0;
+                    spProPressTime=null;
+                    SPClassNavigatorUtils.spFunPushRoute(context,SPClassTestPage());
+                  }
                 },
               ),
               SizedBox(height: 10,),
