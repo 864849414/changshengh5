@@ -191,7 +191,7 @@ class SPClassBaseApi{
         }
 
       }else{
-         result =SPClassBaseModelEntity(response?.statusCode.toString(),"网络异常:statusCode:${response?.statusCode}",false);
+        result =SPClassBaseModelEntity(response?.statusCode.toString(),"网络异常:statusCode:${response?.statusCode}",false);
       }
 
     }on  DioError catch(e){
@@ -214,7 +214,8 @@ class SPClassBaseApi{
           break;
       }
     } catch (exception){
-       result =SPClassBaseModelEntity("".toString(),"网络异常:解析异常",false);
+      print('异常：$url');
+      result =SPClassBaseModelEntity("".toString(),"网络异常:解析异常",false);
        SPClassLogUtils.spFunPrintLog(exception.toString());
     }finally{
       cancelToken=null;

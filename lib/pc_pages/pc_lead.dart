@@ -10,7 +10,7 @@ class PCLead extends StatefulWidget {
 }
 
 class _PCLeadState extends State<PCLead> {
-
+ String  text ='测试';
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(BoxConstraints(
@@ -34,7 +34,22 @@ class _PCLeadState extends State<PCLead> {
             ),
             Expanded(child:TabBarView(
               children: [
-                Text('111',style: TextStyle(color: Colors.black),),
+                Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                      onHover: (a)async{
+                        print('哈哈哈：$a');
+                        text ='悬浮';
+                        setState(() {
+
+                        });
+                      },
+                      child: Column(
+                        children: [
+                          Container(color:Colors.red,width: 300,height:400,child: Text(text,style: TextStyle(color: Colors.black),),),
+                        ],
+                      )),
+                ),
                 Text('222',style: TextStyle(color: Colors.black),),
                 Text('333',style: TextStyle(color: Colors.black),),
               ],
