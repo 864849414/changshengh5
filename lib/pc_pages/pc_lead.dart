@@ -28,7 +28,7 @@ class _PCLeadState extends State<PCLead> {
         child: Column(
           children: [
             Container(
-              color: MyColors.main1,
+              color: Color(0xFF0A65B4),
               padding: EdgeInsets.symmetric(horizontal: 410.w),
               child: Row(
                 children: [

@@ -1,15 +1,240 @@
+import 'package:changshengh5/api/SPClassApiManager.dart';
+import 'package:changshengh5/api/SPClassHttpCallBack.dart';
+import 'package:changshengh5/app/SPClassApplicaion.dart';
+import 'package:changshengh5/model/SPClassExpertListEntity.dart';
+import 'package:changshengh5/untils/SPClassImageUtil.dart';
+import 'package:changshengh5/untils/SPClassStringUtils.dart';
+import 'package:changshengh5/untils/SPClassToastUtils.dart';
+import 'package:changshengh5/untils/colors.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PCExpertItem extends StatefulWidget {
-  const PCExpertItem({Key? key}) : super(key: key);
+  final SPClassExpertListExpertList ?data;
+  const PCExpertItem({Key? key,this.data}) : super(key: key);
 
   @override
   _PCExpertItemState createState() => _PCExpertItemState();
 }
 
 class _PCExpertItemState extends State<PCExpertItem> {
+  SPClassExpertListExpertList ?data;
+  @override
+  void initState() {
+    data = widget.data;
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      margin: EdgeInsets.all(2.w),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.16), blurRadius: 6,offset: Offset(0,3))],
+      ),
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.only(left: 16.w,right: 16.w,top: 16.w,bottom: 8.w),
+            decoration: BoxDecoration(
+              border: Border(bottom: BorderSide(color: MyColors.grey_cc,width: 1)),
+                gradient:LinearGradient(
+                    begin:  Alignment.topCenter,
+                    end:  Alignment.bottomCenter,
+                    colors: [
+                      Color(0xFFF0F3F7),
+                      Colors.white
+                    ]
+                )
+            ),
+            child: Row(
+              children: [
+                ClipOval(
+                  child: ( data?.spProAvatarUrl==null||data!.spProAvatarUrl!.isEmpty)? Image.asset(
+                    SPClassImageUtil.spFunGetImagePath("ic_default_avater"),
+                    width: 48.w,
+                    height: 48.w,
+                  ):Image.network(
+                    data?.spProAvatarUrl??'',
+                    width: 48.w,
+                    height: 48.w,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                SizedBox(width: 4.w,),
+                Expanded(child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(SPClassStringUtils.spFunMaxLength(data?.spProNickName??'',length: 6),style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.bold),overflow: TextOverflow.ellipsis,maxLines: 1,),
+                    SizedBox(height: 6.w,),
+                    Text('${SPClassStringUtils.spFunMaxLength(data?.intro??'',length: 5)} 粉丝:${data!.spProFollowerNum}',style: TextStyle(color: MyColors.grey_66,fontSize: 12.sp),),
+                  ],
+                )),
+                SizedBox(width: 24.w,),
+                GestureDetector(
+                  onTap: (){
+                    if(spFunIsLogin(context: context)){
+                      SPClassApiManager.spFunGetInstance().spFunFollowExpert(isFollow: !data!.spProIsFollowing!,spProExpertUid: data!.spProUserId,context: context,spProCallBack: SPClassHttpCallBack(
+                          spProOnSuccess: (result){
+                            if(!data!.spProIsFollowing!){
+                              SPClassToastUtils.spFunShowToast(msg: "关注成功");
+                              data!.spProIsFollowing=true;
+                            }else{
+                              data!.spProIsFollowing=false;
+                            }
+                            if(mounted){
+                              setState(() {});
+                            }
+                          },onError: (e){},spProOnProgress: (v){}
+                      ));
+                    }
+                  },
+                  child: Image.asset(
+                    SPClassImageUtil.spFunGetImagePath(data!.spProIsFollowing!?'pc_follow':'pc_unfollow'),
+                    width: 64.w,
+                  ),
+                )
+              ],
+            ),
+          ),
+          // 擅长联赛
+          Container(
+            margin: EdgeInsets.only(left: 16.w,right: 16.w,top: 21.w),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Text('擅长联赛:',style: TextStyle(fontSize: 12.sp,color: MyColors.grey_33),),
+                    Container(
+                      margin: EdgeInsets.only(left: 8.w),
+                      padding: EdgeInsets.symmetric(horizontal: 8.w,vertical: 1.w),
+                      decoration: BoxDecoration(
+                          color: Color.fromRGBO(27, 141, 224, 0.1),
+                          border: Border.all(color: MyColors.main1,width: 0.4),
+                          borderRadius: BorderRadius.circular(2)
+                      ),
+                      child: Text('亚洲杯',style: TextStyle(fontSize: 12.sp,color: MyColors.main1),),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 8.w),
+                      padding: EdgeInsets.symmetric(horizontal: 8.w,vertical: 1.w),
+                      decoration: BoxDecoration(
+                          color: Color.fromRGBO(27, 141, 224, 0.1),
+                          border: Border.all(color: MyColors.main1,width: 0.4),
+                          borderRadius: BorderRadius.circular(2)
+                      ),
+                      child: Text('亚洲杯',style: TextStyle(fontSize: 12.sp,color: MyColors.main1),),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 8.w),
+                      padding: EdgeInsets.symmetric(horizontal: 8.w,vertical: 1.w),
+                      decoration: BoxDecoration(
+                          color: Color.fromRGBO(27, 141, 224, 0.1),
+                          border: Border.all(color: MyColors.main1,width: 0.4),
+                          borderRadius: BorderRadius.circular(2)
+                      ),
+                      child: Text('亚洲杯',style: TextStyle(fontSize: 12.sp,color: MyColors.main1),),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 11.w,),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 85.w,
+                        height: 64.w,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Color(0xFFF0F4F7),
+                            borderRadius: BorderRadius.circular(6)
+                        ),
+                        child: RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                              text: '${data?.spProCurrentRedNum}\n',
+                              style: TextStyle(
+                                fontSize: 24.sp,
+                                color: MyColors.main2,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: '最近连红',
+                                  style: TextStyle(color: MyColors.grey_99,fontSize: 12.sp,),
+                                ),
+                              ]
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 85.w,
+                        height: 64.w,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Color(0xFFF0F4F7),
+                            borderRadius: BorderRadius.circular(6)
+                        ),
+                        child: RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                              text: '${data?.spProMaxRedNum}\n',
+                              style: TextStyle(
+                                fontSize: 24.sp,
+                                color: MyColors.main2,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: '历史最高连红',
+                                  style: TextStyle(color: MyColors.grey_99,fontSize: 12.sp,),
+                                ),
+                              ]
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 85.w,
+                        height: 64.w,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Color(0xFFF0F4F7),
+                            borderRadius: BorderRadius.circular(6)
+                        ),
+                        child: RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                              text: (double.tryParse(data!.spProRecentProfitSum!)!*100).toStringAsFixed(0),
+                              style: TextStyle(
+                                fontSize: 24.sp,
+                                color: MyColors.main2,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: '%\n',
+                                  style: TextStyle(color: MyColors.main2,fontSize: 12.sp,),
+                                ),
+                                TextSpan(
+                                  text: '最近回报率',
+                                  style: TextStyle(color: MyColors.grey_99,fontSize: 12.sp,),
+                                ),
+                              ]
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+
+        ],
+      ),
+    );
   }
 }
