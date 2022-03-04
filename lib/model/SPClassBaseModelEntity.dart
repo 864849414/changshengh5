@@ -97,7 +97,7 @@ class SPClassBaseModelEntity {
       return SPClassSsOddsList.fromJson(json) as T;
     } else if (T.toString() == "SPClassAnylizeMatchList\$") {
       return SPClassAnylizeMatchList.fromJson(json) as T;
-    } else if (T.toString() == "SPClassCreatOrderEntity\$") {
+    } else if (T.toString() == "SPClassCreatOrderEntity\$"||T.toString() =='minified:zi') {
       return SPClassCreatOrderEntity.fromJson(json) as T;
     } else if (T.toString() == "SPClassExpertListEntity\$") {  //web端多个 \$
       return SPClassExpertListEntity.fromJson(json) as T;

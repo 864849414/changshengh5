@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
   bool isPC =false;
   @override
   Widget build(BuildContext context) {
-    isPC = MediaQuery.of(context).size.width>800;
+    isPC = MediaQuery.of(context).size.width>600;
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
