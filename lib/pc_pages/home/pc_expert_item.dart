@@ -11,18 +11,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PCExpertItem extends StatefulWidget {
-  final SPClassExpertListExpertList ?data;
-  const PCExpertItem({Key? key,this.data}) : super(key: key);
+   SPClassExpertListExpertList ?data;
+   PCExpertItem({Key? key,this.data}) : super(key: key);
 
   @override
   _PCExpertItemState createState() => _PCExpertItemState();
 }
 
 class _PCExpertItemState extends State<PCExpertItem> {
-  SPClassExpertListExpertList ?data;
   @override
   void initState() {
-    data = widget.data;
     // TODO: implement initState
     super.initState();
   }
@@ -39,7 +37,7 @@ class _PCExpertItemState extends State<PCExpertItem> {
           Container(
             padding: EdgeInsets.only(left: 16.w,right: 16.w,top: 16.w,bottom: 8.w),
             decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(color: MyColors.grey_cc,width: 1)),
+              border: Border(bottom: BorderSide(color: MyColors.grey_cc,width: 0.4)),
                 gradient:LinearGradient(
                     begin:  Alignment.topCenter,
                     end:  Alignment.bottomCenter,
@@ -52,12 +50,12 @@ class _PCExpertItemState extends State<PCExpertItem> {
             child: Row(
               children: [
                 ClipOval(
-                  child: ( data?.spProAvatarUrl==null||data!.spProAvatarUrl!.isEmpty)? Image.asset(
+                  child: ( widget.data?.spProAvatarUrl==null||widget.data!.spProAvatarUrl!.isEmpty)? Image.asset(
                     SPClassImageUtil.spFunGetImagePath("ic_default_avater"),
                     width: 48.w,
                     height: 48.w,
                   ):Image.network(
-                    data?.spProAvatarUrl??'',
+                    widget.data?.spProAvatarUrl??'',
                     width: 48.w,
                     height: 48.w,
                     fit: BoxFit.fill,
@@ -67,22 +65,22 @@ class _PCExpertItemState extends State<PCExpertItem> {
                 Expanded(child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(SPClassStringUtils.spFunMaxLength(data?.spProNickName??'',length: 6),style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.bold),overflow: TextOverflow.ellipsis,maxLines: 1,),
+                    Text(SPClassStringUtils.spFunMaxLength(widget.data?.spProNickName??'',length: 6),style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.bold),overflow: TextOverflow.ellipsis,maxLines: 1,),
                     SizedBox(height: 6.w,),
-                    Text('${SPClassStringUtils.spFunMaxLength(data?.intro??'',length: 5)} 粉丝:${data!.spProFollowerNum}',style: TextStyle(color: MyColors.grey_66,fontSize: 12.sp),),
+                    Text('${SPClassStringUtils.spFunMaxLength(widget.data?.intro??'',length: 5)} 粉丝:${widget.data!.spProFollowerNum}',style: TextStyle(color: MyColors.grey_66,fontSize: 12.sp),),
                   ],
                 )),
                 SizedBox(width: 24.w,),
                 GestureDetector(
                   onTap: (){
                     if(spFunIsLogin(context: context)){
-                      SPClassApiManager.spFunGetInstance().spFunFollowExpert(isFollow: !data!.spProIsFollowing!,spProExpertUid: data!.spProUserId,context: context,spProCallBack: SPClassHttpCallBack(
+                      SPClassApiManager.spFunGetInstance().spFunFollowExpert(isFollow: !widget.data!.spProIsFollowing!,spProExpertUid: widget.data!.spProUserId,context: context,spProCallBack: SPClassHttpCallBack(
                           spProOnSuccess: (result){
-                            if(!data!.spProIsFollowing!){
+                            if(!widget.data!.spProIsFollowing!){
                               SPClassToastUtils.spFunShowToast(msg: "关注成功");
-                              data!.spProIsFollowing=true;
+                              widget.data!.spProIsFollowing=true;
                             }else{
-                              data!.spProIsFollowing=false;
+                              widget.data!.spProIsFollowing=false;
                             }
                             if(mounted){
                               setState(() {});
@@ -92,7 +90,7 @@ class _PCExpertItemState extends State<PCExpertItem> {
                     }
                   },
                   child: Image.asset(
-                    SPClassImageUtil.spFunGetImagePath(data!.spProIsFollowing!?'pc_follow':'pc_unfollow'),
+                    SPClassImageUtil.spFunGetImagePath(widget.data!.spProIsFollowing!?'pc_follow':'pc_unfollow'),
                     width: 64.w,
                   ),
                 )
@@ -155,7 +153,7 @@ class _PCExpertItemState extends State<PCExpertItem> {
                         child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
-                              text: '${data?.spProCurrentRedNum}\n',
+                              text: '${widget.data?.spProCurrentRedNum}\n',
                               style: TextStyle(
                                 fontSize: 24.sp,
                                 color: MyColors.main2,
@@ -181,7 +179,7 @@ class _PCExpertItemState extends State<PCExpertItem> {
                         child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
-                              text: '${data?.spProMaxRedNum}\n',
+                              text: '${widget.data?.spProMaxRedNum}\n',
                               style: TextStyle(
                                 fontSize: 24.sp,
                                 color: MyColors.main2,
@@ -207,7 +205,7 @@ class _PCExpertItemState extends State<PCExpertItem> {
                         child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
-                              text: (double.tryParse(data!.spProRecentProfitSum!)!*100).toStringAsFixed(0),
+                              text: (double.tryParse(widget.data!.spProRecentProfitSum!)!*100).toStringAsFixed(0),
                               style: TextStyle(
                                 fontSize: 24.sp,
                                 color: MyColors.main2,

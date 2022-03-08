@@ -16,14 +16,13 @@ class PCMatchItemWidget extends StatefulWidget {
 }
 
 class _PCMatchItemWidgetState extends State<PCMatchItemWidget> {
-  SPClassGuessMatchInfo ?data;
 
   @override
   void initState() {
-    data =widget.data;
     // TODO: implement initState
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +47,8 @@ class _PCMatchItemWidgetState extends State<PCMatchItemWidget> {
                   child: Row(
                     children: [
                       SizedBox(height: 8.sp,),
-                      ( data?.status=="in_progress" ) ? Text("进行中",style: TextStyle(fontSize: 14.sp,color: Color(0xFFFB5146),),):Text(SPClassDateUtils.spFunDateFormatByString(data?.spProStTime??'', "MM-dd HH:mm"),style: TextStyle(fontSize: 14.sp,color: Color(0xFF999999),),maxLines: 1,),
-                      Text("「${SPClassStringUtils.spFunMaxLength(data?.spProLeagueName??'',length: 3)}」",style: TextStyle(fontSize: 14.sp,color: Color(0xFF999999),),maxLines: 1,),
+                      ( widget.data?.status=="in_progress" ) ? Text("进行中",style: TextStyle(fontSize: 14.sp,color: Color(0xFFFB5146),),):Text(SPClassDateUtils.spFunDateFormatByString(widget.data?.spProStTime??'', "MM-dd HH:mm"),style: TextStyle(fontSize: 14.sp,color: Color(0xFF999999),),maxLines: 1,),
+                      Text("「${SPClassStringUtils.spFunMaxLength(widget.data?.spProLeagueName??'',length: 3)}」",style: TextStyle(fontSize: 14.sp,color: Color(0xFF999999),),maxLines: 1,),
                     ],
                   ),
                 ),
@@ -66,12 +65,12 @@ class _PCMatchItemWidgetState extends State<PCMatchItemWidget> {
                           ]
                       )
                   ),
-                  child: Text('${data?.spProSchemeNum}观点',style: TextStyle(color: Colors.white,fontSize:14.sp),),
+                  child: Text('${widget.data?.spProSchemeNum}观点',style: TextStyle(color: Colors.white,fontSize:14.sp),),
                 ),
               ],
             ),
             Expanded(
-              child: data?.status=="not_started" ?
+              child: widget.data?.status=="not_started" ?
               Row(
                 children: <Widget>[
                   Expanded(
@@ -81,28 +80,28 @@ class _PCMatchItemWidgetState extends State<PCMatchItemWidget> {
                         children: <Widget>[
                           Row(
                             children: <Widget>[
-                              (data!.spProIconUrlOne!.isNotEmpty)? CachedNetworkImage(imageUrl: data?.spProIconUrlOne??'',width: 22.w,):
+                              (widget.data!.spProIconUrlOne!.isNotEmpty)? CachedNetworkImage(imageUrl: widget.data?.spProIconUrlOne??'',width: 22.w,):
                               Image.asset(
                                 SPClassImageUtil.spFunGetImagePath("ic_team_one"),
                                 width: 22.sp,
                               ),
                               SizedBox(width: 9.sp),
                               Expanded(
-                                child:  Text(data?.spProTeamOne??'',style: TextStyle(fontSize:16.sp,),maxLines: 1,),
+                                child:  Text(widget.data?.spProTeamOne??'',style: TextStyle(fontSize:16.sp,),maxLines: 1,),
                               ),
                             ],
                           ),
                           SizedBox(height: 18.sp,),
                           Row(
                             children: <Widget>[
-                              (data!.spProIconUrlTwo!.isNotEmpty)? CachedNetworkImage(imageUrl: data!.spProIconUrlTwo!,width:22.w,):
+                              (widget.data!.spProIconUrlTwo!.isNotEmpty)? CachedNetworkImage(imageUrl: widget.data!.spProIconUrlTwo!,width:22.w,):
                               Image.asset(
                                 SPClassImageUtil.spFunGetImagePath("ic_team_two"),
                                 width: 22.w,
                               ),
                               SizedBox(width: 9.sp),
                               Expanded(
-                                child:  Text(data?.spProTeamTwo??'',style: TextStyle(fontSize: 16.sp,),maxLines: 1,),
+                                child:  Text(widget.data?.spProTeamTwo??'',style: TextStyle(fontSize: 16.sp,),maxLines: 1,),
                               ),
                             ],
                           ),
@@ -125,31 +124,31 @@ class _PCMatchItemWidgetState extends State<PCMatchItemWidget> {
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      (data!.spProIconUrlOne!.isNotEmpty)? CachedNetworkImage(imageUrl: data?.spProIconUrlOne??'',width: 22.w,):
+                      (widget.data!.spProIconUrlOne!.isNotEmpty)? CachedNetworkImage(imageUrl: widget.data?.spProIconUrlOne??'',width: 22.w,):
                       Image.asset(
                         SPClassImageUtil.spFunGetImagePath("ic_team_one"),
                         width: 22.w,
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child:  Text(data?.spProTeamOne??'',style: TextStyle(fontSize: 16.sp,),maxLines: 1,),
+                        child:  Text(widget.data?.spProTeamOne??'',style: TextStyle(fontSize: 16.sp,),maxLines: 1,),
                       ),
-                      Text(data?.status=="not_started" ?  "-":data?.spProScoreOne??'',style: TextStyle(fontSize: 14.sp,color:data?.status=="in_progress" ? Color(0xFFFB5146): Color(0xFF999999))),
+                      Text(widget.data?.status=="not_started" ?  "-":widget.data?.spProScoreOne??'',style: TextStyle(fontSize: 14.sp,color:widget.data?.status=="in_progress" ? Color(0xFFFB5146): Color(0xFF999999))),
                     ],
                   ),
                   SizedBox(height: 18.w,),
                   Row(
                     children: <Widget>[
-                      (data!.spProIconUrlTwo!.isNotEmpty)? CachedNetworkImage(imageUrl: data?.spProIconUrlTwo??'',width: 22.w,):
+                      (widget.data!.spProIconUrlTwo!.isNotEmpty)? CachedNetworkImage(imageUrl: widget.data?.spProIconUrlTwo??'',width: 22.w,):
                       Image.asset(
                         SPClassImageUtil.spFunGetImagePath("ic_team_two"),
                         width:22.w,
                       ),
                       SizedBox(width: 5),
                       Expanded(
-                        child:  Text(data?.spProTeamTwo??'',style: TextStyle(fontSize: 16.sp,),maxLines: 1,),
+                        child:  Text(widget.data?.spProTeamTwo??'',style: TextStyle(fontSize: 16.sp,),maxLines: 1,),
                       ),
-                      Text(data?.status=="not_started" ?  "-":data?.spProScoreTwo??'',style: TextStyle(fontSize: 16.sp,color:data?.status=="in_progress" ? Color(0xFFFB5146): Color(0xFF999999))),
+                      Text(widget.data?.status=="not_started" ?  "-":widget.data?.spProScoreTwo??'',style: TextStyle(fontSize: 16.sp,color:widget.data?.status=="in_progress" ? Color(0xFFFB5146): Color(0xFF999999))),
                     ],
                   ),
                 ],

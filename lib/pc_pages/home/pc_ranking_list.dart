@@ -42,7 +42,14 @@ class _PCRankingListState extends State<PCRankingList> {
     matchType= widget.matchType??'is_zq_expert';
     // TODO: implement initState
     super.initState();
+    SPClassApplicaion.spProEventBus.on<String>().listen((event) {
+      if(event.startsWith('pc:home_refresh')){
+        matchType = event.split(':').last;
+        onRefresh();
+      }
+    });
   }
+
 
   @override
   Widget build(BuildContext context) {
