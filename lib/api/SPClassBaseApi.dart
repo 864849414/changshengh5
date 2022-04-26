@@ -164,6 +164,10 @@ class SPClassBaseApi{
           break;
       }
 
+      print('请求url：${httpManager.options.baseUrl}$url');
+      print('请求参数：$params');
+      print('返回数据：${json.decode(response?.data)}');
+
       if(response?.statusCode==200){
         if(method==Method.DOWNLOAD){
           result =SPClassBaseModelEntity("1","suceess",true);
@@ -179,10 +183,7 @@ class SPClassBaseApi{
             //标记
             // data["data"] = json.decode(await Cipher2.decryptAesCbc128Padding7(data["data"],"0CD29CA6CFF94F22","4BE6FB7804494C64"));
           }
-          print('请求url：${httpManager.options.baseUrl}$url');
-          print('请求参数：$queryParameters');
-          print('请求参数body：$spProBodyParameters');
-          print('返回数据：${data}');
+
           result=SPClassBaseModelEntity.formJson(data);
           result.spFunGetObject<T>(object: jsonObject);
           if(result.code=="401"){

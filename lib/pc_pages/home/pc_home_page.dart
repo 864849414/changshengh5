@@ -55,36 +55,88 @@ class _PCHomePageState extends State<PCHomePage> with TickerProviderStateMixin<P
 
   @override
   Widget build(BuildContext context) {
-    return SPClassNestedScrollViewRefreshBallStyle(
-      onRefresh: () async{
+    return Stack(
+      children: [
+        SPClassNestedScrollViewRefreshBallStyle(
+          onRefresh: () async{
 
-      },
-      child: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return [
-            SliverToBoxAdapter(
-              child: Stack(
-                overflow: Overflow.visible,
-                children: [
-                  Image.asset(
-                    SPClassImageUtil.spFunGetImagePath('pc_home_bg'),
-                    width: MediaQuery.of(context).size.width,
-                  ),
-                  Column(
+          },
+          child: NestedScrollView(
+            headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+              return [
+                SliverToBoxAdapter(
+                  child: Stack(
+                    overflow: Overflow.visible,
                     children: [
-                      matchWidget(),
-                      expertWidget(),
+                      Image.asset(
+                        SPClassImageUtil.spFunGetImagePath('pc_home_bg'),
+                        width: MediaQuery.of(context).size.width,
+                      ),
+                      Column(
+                        children: [
+                          matchWidget(),
+                          expertWidget(),
+                        ],
+                      )
                     ],
-                  )
+                  ),
+                ),
+
+              ];
+            },
+            body: schemeWidget(),
+          ),
+
+        ),
+        Positioned(
+            left: 368.w,
+            top: MediaQuery.of(context).size.height/2,
+            child: Container(
+              width: 80.w,
+              height: 128.w,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Column(
+                children: [
+                  Expanded(child: GestureDetector(
+                    onTap:(){
+                      spProHomeMatchType='足球';
+                      spProMatchType = "is_zq_expert";
+                      spFunRefresh();
+                      SPClassApplicaion.spProEventBus.fire("pc:home_refresh:$spProMatchType");
+                      setState(() {
+                      });
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      color:spProHomeMatchType=='足球'? MyColors.main1:MyColors.white,
+                      child: Text('足球',style: TextStyle(fontSize: 18.sp,color:spProHomeMatchType=='足球'?MyColors.white: MyColors.grey_66),
+                      ),
+                    ),
+                  )),
+                  Expanded(child: GestureDetector(
+                    onTap:(){
+                      spProHomeMatchType='篮球';
+                      spProMatchType = "is_lq_expert";
+                      spFunRefresh();
+                      SPClassApplicaion.spProEventBus.fire("pc:home_refresh:$spProMatchType");
+                      setState(() {
+                      });
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      color:spProHomeMatchType=='篮球'? MyColors.main1:MyColors.white,
+                      child: Text('篮球',style: TextStyle(fontSize: 18.sp,color:spProHomeMatchType=='篮球'? MyColors.white:MyColors.main1),),
+                    ),
+                  )),
                 ],
               ),
-            ),
+            )
+        )
 
-          ];
-        },
-        body: schemeWidget(),
-      ),
-
+      ],
     );
     return Stack(
       children: [

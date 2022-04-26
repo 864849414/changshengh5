@@ -14,13 +14,13 @@ class SPClassNetConfig {
 
    */
   static var  BASE_URL_DEBUG = 'http://api-test.demo.gz583.com/';
-  static var  BASE_URL_RELEASE = 'http://api.gz583.com/';
-  static var  BASE_URL_IOS_RELEASE = 'http://api.gz583.cn/';
+  static var  BASE_URL_RELEASE = 'http://api.win2048.com/';
+  static var  BASE_URL_IOS_RELEASE = 'http://api.win2048.com/';
   static var  SHARE_URL_DEBUG = 'http://demo.gz583.com/';
   static var  SHARE_URL_RELEASE = 'http://www.gz583.com/';
   static var  SHARE_URL_IOS_RELEASE = 'http://www.gz583.cn/';
   static var  IMAGE_URL_DEBUG = 'http://cdn.demo.gz583.com/';
-  static var  IMAGE_URL_RELEASE = 'http://cdn.gz583.com/';
+  static var  IMAGE_URL_RELEASE = 'http://cdn.win2048.com/';
 
   static spFunGetBasicUrl() {
     return  SPClassApplicaion.spProDEBUG? SPClassNetConfig.BASE_URL_DEBUG:SPClassNetConfig.BASE_URL_RELEASE;//Platform.isIOS ? BASE_URL_IOS_RELEASE: SPClassNetConfig.BASE_URL_RELEASE;

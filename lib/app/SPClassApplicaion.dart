@@ -21,7 +21,7 @@ class SPClassApplicaion
   static String spProChannelId="11";
   static  String spProAndroidAppId="100";
   static const String spProIOSAppId="106";
-  static bool spProDEBUG = true;
+  static bool spProDEBUG = false;
   static SPClassUserInfo ?spProUserInfo;
   static Map<String,dynamic> ?spProJsMap;
   static SPClassUserLoginInfo ?spProUserLoginInfo;

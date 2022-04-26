@@ -1,3 +1,5 @@
+import 'package:changshengh5/pc_pages/score/pc_score_home.dart';
+import 'package:changshengh5/pc_pages/score/pc_score_page.dart';
 import 'package:changshengh5/untils/SPClassImageUtil.dart';
 import 'package:changshengh5/untils/colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -70,8 +72,8 @@ class _PCLeadState extends State<PCLead> {
             Expanded(child:
             TabBarView(
                 children: [
+                  PCScoreHome(),
                   PCHomePage(),
-                  Text('1111'),
                   Text('2222'),
                   Text('3333'),
                   Text('4444'),
