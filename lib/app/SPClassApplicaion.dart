@@ -9,6 +9,7 @@ import 'package:changshengh5/model/SPClassShowPListEntity.dart';
 import 'package:changshengh5/model/SPClassUserInfo.dart';
 import 'package:changshengh5/model/SPClassUserLoginInfo.dart';
 import 'package:changshengh5/pages/login/SPClassVideoLoginPage.dart';
+import 'package:changshengh5/pc_pages/login/pc_login_page.dart';
 import 'package:changshengh5/untils/SPClassNavigatorUtils.dart';
 import 'package:changshengh5/untils/SPClassSharedPreferencesKeys.dart';
 import 'package:flutter/material.dart';
@@ -104,6 +105,19 @@ bool spFunIsLogin({BuildContext ?context}) {
   } else {
     if (context != null) {
       SPClassNavigatorUtils.spFunPushRoute(context, SPClassVideoLoginPage());
+    }
+    return false;
+  }
+}
+
+bool spFunPcIsLogin({BuildContext ?context}) {
+  if (SPClassApplicaion.spProUserLoginInfo != null) {
+    return true;
+  } else {
+    if (context != null) {
+      showDialog(context: context, builder: (context){
+        return PCLoginPage();
+      });
     }
     return false;
   }

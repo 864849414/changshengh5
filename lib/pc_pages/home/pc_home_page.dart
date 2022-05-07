@@ -36,7 +36,8 @@ class _PCHomePageState extends State<PCHomePage> with TickerProviderStateMixin<P
   List<SPClassSchemeListSchemeList> spProSchemeList=[];//方案
   int page =1;
   String spProFetchType = 'recent_correct_rate';
-  String spProPlayWay = '';
+  String spProFootballPlayWay = '';
+  String spProBasketballPlayWay = '';
   GlobalKey _filterkey = GlobalKey();
 
 
@@ -136,76 +137,6 @@ class _PCHomePageState extends State<PCHomePage> with TickerProviderStateMixin<P
             )
         )
 
-      ],
-    );
-    return Stack(
-      children: [
-        SingleChildScrollView(
-          child: Stack(
-            overflow: Overflow.visible,
-            children: [
-              Image.asset(
-                SPClassImageUtil.spFunGetImagePath('pc_home_bg'),
-                width: MediaQuery.of(context).size.width,
-              ),
-              Column(
-                children: [
-                  matchWidget(),
-                  expertWidget(),
-                  schemeWidget(),
-                ],
-              )
-
-            ],
-          ),
-        ),
-        Positioned(
-          left: 368.w,
-            top: MediaQuery.of(context).size.height/2,
-            child: Container(
-              width: 80.w,
-              height: 128.w,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Column(
-                children: [
-                  Expanded(child: GestureDetector(
-                    onTap:(){
-                      spProHomeMatchType='足球';
-                      spProMatchType = "is_zq_expert";
-                      spFunRefresh();
-                      SPClassApplicaion.spProEventBus.fire("pc:home_refresh:$spProMatchType");
-                      setState(() {
-                      });
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      color:spProHomeMatchType=='足球'? MyColors.main1:MyColors.white,
-                      child: Text('足球',style: TextStyle(fontSize: 18.sp,color:spProHomeMatchType=='足球'?MyColors.white: MyColors.grey_66),
-                      ),
-                    ),
-                  )),
-                  Expanded(child: GestureDetector(
-                    onTap:(){
-                      spProHomeMatchType='篮球';
-                      spProMatchType = "is_lq_expert";
-                      spFunRefresh();
-                      SPClassApplicaion.spProEventBus.fire("pc:home_refresh:$spProMatchType");
-                      setState(() {
-                      });
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      color:spProHomeMatchType=='篮球'? MyColors.main1:MyColors.white,
-                      child: Text('篮球',style: TextStyle(fontSize: 18.sp,color:spProHomeMatchType=='篮球'? MyColors.white:MyColors.main1),),
-                    ),
-                  )),
-                ],
-              ),
-            )
-        )
       ],
     );
   }
@@ -342,7 +273,6 @@ class _PCHomePageState extends State<PCHomePage> with TickerProviderStateMixin<P
                             onTap: (){
                               selectedTabScheme =e;
                               spProFetchType = spProTabSchemeKeys[spProTabSchemeTitles.indexOf(e)];
-                              spProPlayWay = '';
                               getScheme();
                               setState(() {
                               });
@@ -374,7 +304,11 @@ class _PCHomePageState extends State<PCHomePage> with TickerProviderStateMixin<P
                         items: <PopupMenuItem<int>>[
                           PopupMenuItem<int>(
                               child:PCHomeFilterMatchDialog(spProHomeMatchType,(value){
-                                spProPlayWay = value;
+                                if(spProHomeMatchType == "足球"){
+                                  spProFootballPlayWay = value;
+                                }else{
+                                  spProBasketballPlayWay = value;
+                                }
                                 getScheme();
                               }),
                               enabled: false,
@@ -474,7 +408,7 @@ class _PCHomePageState extends State<PCHomePage> with TickerProviderStateMixin<P
 
   Future<void>  getScheme() async {
     page=1;
-    return  SPClassApiManager.spFunGetInstance().spFunSchemeList(queryParameters: {"fetch_type":spProFetchType,"page":page.toString(),"playing_way":spProPlayWay,"match_type":spProHomeMatchType},spProCallBack: SPClassHttpCallBack(
+    return  SPClassApiManager.spFunGetInstance().spFunSchemeList(queryParameters: {"fetch_type":spProFetchType,"page":page.toString(),"playing_way":spProHomeMatchType == "足球"?spProFootballPlayWay:spProBasketballPlayWay,"match_type":spProHomeMatchType},spProCallBack: SPClassHttpCallBack(
       spProOnSuccess: (list){
         if(mounted){
           setState(() {
@@ -488,7 +422,7 @@ class _PCHomePageState extends State<PCHomePage> with TickerProviderStateMixin<P
   }
 
   Future<void>  getMoreScheme() async {
-    await  SPClassApiManager.spFunGetInstance().spFunSchemeList(queryParameters: {"fetch_type":spProFetchType,"page":(page+1).toString(),"playing_way":spProPlayWay,"match_type":spProHomeMatchType},spProCallBack: SPClassHttpCallBack(
+    await  SPClassApiManager.spFunGetInstance().spFunSchemeList(queryParameters: {"fetch_type":spProFetchType,"page":(page+1).toString(),"playing_way":spProHomeMatchType == "足球"?spProFootballPlayWay:spProBasketballPlayWay,"match_type":spProHomeMatchType},spProCallBack: SPClassHttpCallBack(
         spProOnSuccess: (list){
           if(list.spProSchemeList!.isNotEmpty){
             page++;

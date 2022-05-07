@@ -249,7 +249,7 @@ class _PCRankingListState extends State<PCRankingList> {
               if(widget.isHomePage){
                 spProExpertList=list.spProExpertList!.take(6).toList();
               }else{
-                spProExpertList=list.spProExpertList!;
+                spProExpertList=list.spProExpertList!.take(10).toList();
               }
             });
           }

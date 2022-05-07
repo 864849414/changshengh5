@@ -1,12 +1,19 @@
+import 'package:changshengh5/app/SPClassApplicaion.dart';
+import 'package:changshengh5/pc_pages/recharge/pc_recharge_page.dart';
 import 'package:changshengh5/pc_pages/score/pc_score_home.dart';
 import 'package:changshengh5/pc_pages/score/pc_score_page.dart';
+import 'package:changshengh5/untils/SPClassCommonMethods.dart';
 import 'package:changshengh5/untils/SPClassImageUtil.dart';
 import 'package:changshengh5/untils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'download/pc_download.dart';
+import 'expert/pc_expert_home.dart';
 import 'home/pc_home_page.dart';
+import 'login/pc_login_page.dart';
+import 'mine/pc_mine.dart';
 
 class PCLead extends StatefulWidget {
   const PCLead({Key? key}) : super(key: key);
@@ -18,7 +25,7 @@ class PCLead extends StatefulWidget {
 class _PCLeadState extends State<PCLead> {
  String  text ='测试';
  List tabBarList = ['首页','赛事','专家','APP下载','充值中心'];
-
+ PageController controller =new PageController();
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(BoxConstraints(
@@ -46,6 +53,9 @@ class _PCLeadState extends State<PCLead> {
                       unselectedLabelStyle: TextStyle(fontSize: 18.sp,color: Colors.white,),
                       labelStyle:TextStyle(fontSize: 18.sp,color: Colors.white,),
                       indicatorSize: TabBarIndicatorSize.tab,
+                      onTap: (index){
+                        controller.jumpToPage(index);
+                      },
                       tabs: tabBarList.map((e){
                         return Tab(text: e,);
                       }).toList(),
@@ -53,30 +63,56 @@ class _PCLeadState extends State<PCLead> {
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 88.w),
-                    child: Row(
-                      children: [
-                        Text('登陆',style: TextStyle(fontSize: 18.sp,color: Colors.white),),
-                        Container(
-                          width: 1,
-                          height: 18.w,
-                          color: Color.fromRGBO(255, 255, 255, 0.4),
-                          margin: EdgeInsets.symmetric(horizontal: 8),
-                        ),
-                        Text('注册',style: TextStyle(fontSize: 18.sp,color: Colors.white),),
-                      ],
+                    child:spFunPcIsLogin()?
+                    InkWell(
+                      onTap: (){
+                        controller.jumpToPage(tabBarList.length);
+                      },
+                      child: Row(
+                        children: [
+                          ClipOval(
+                            child: SPClassImageUtil.spFunNetWordImage(
+                                placeholder: "ic_default_avater",
+                                url: SPClassApplicaion.spProUserInfo!.spProAvatarUrl,
+                                width: width(36),
+                                height:  width(36)),
+                          ),
+                          Text(
+                            SPClassApplicaion
+                                .spProUserInfo!.spProNickName,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: sp(18)),
+                          ),
+                        ],
+                      ),
+                    )
+                   :
+                    InkWell(
+                      onTap: (){
+                        showDialog(context: context, builder: (context){
+                          return PCLoginPage();
+                        });
+                      },
+                      child: Text('登陆',style: TextStyle(fontSize: 18.sp,color: Colors.white),
+                      ),
                     ),
-                  )
+                  ),
+
                 ],
               ),
             ),
             Expanded(child:
-            TabBarView(
+            PageView(
+              controller: controller,
+              physics: NeverScrollableScrollPhysics(),
                 children: [
-                  PCScoreHome(),
                   PCHomePage(),
-                  Text('2222'),
-                  Text('3333'),
-                  Text('4444'),
+                  PCScoreHome(),
+                  PCExpertHome(),
+                  PCDownload(),
+                  PCRechargePage(),
+                  PCMine(),
                 ]
             ))
           ],
