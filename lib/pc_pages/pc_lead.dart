@@ -2,9 +2,9 @@ import 'package:changshengh5/app/SPClassApplicaion.dart';
 import 'package:changshengh5/pc_pages/recharge/pc_recharge_page.dart';
 import 'package:changshengh5/pc_pages/score/pc_score_home.dart';
 import 'package:changshengh5/pc_pages/score/pc_score_page.dart';
-import 'package:changshengh5/untils/SPClassCommonMethods.dart';
-import 'package:changshengh5/untils/SPClassImageUtil.dart';
-import 'package:changshengh5/untils/colors.dart';
+import 'package:changshengh5/utils/SPClassCommonMethods.dart';
+import 'package:changshengh5/utils/SPClassImageUtil.dart';
+import 'package:changshengh5/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,10 +22,25 @@ class PCLead extends StatefulWidget {
   _PCLeadState createState() => _PCLeadState();
 }
 
+
 class _PCLeadState extends State<PCLead> {
  String  text ='测试';
  List tabBarList = ['首页','赛事','专家','APP下载','充值中心'];
  PageController controller =new PageController();
+
+ @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    SPClassApplicaion.spProEventBus.on<String>().listen((event) {
+      if (event == "loginInfo") {
+        setState(() {
+
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(BoxConstraints(

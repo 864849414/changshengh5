@@ -1,4 +1,4 @@
-import 'package:changshengh5/untils/SPClassImageUtil.dart';
+import 'package:changshengh5/utils/SPClassImageUtil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,6 +13,12 @@ class PCDownload extends StatefulWidget {
 
 class _PCDownloadState extends State<PCDownload> {
   bool isIos =false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +44,9 @@ class _PCDownloadState extends State<PCDownload> {
   }
 
   Widget qrImageWidget(){
-    // String appid ='wx55c3416a14860147';
-    // String redirect_uri= Uri.encodeComponent("https://api.gz583.com/hongsheng/");
-    // final url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect';
+    String appid ='wxb8916d274913012a';
+    String redirect_uri= Uri.encodeComponent("https://api.gz583.com/hongsheng/");
+    final url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect';
 
     return Row(
       children: [

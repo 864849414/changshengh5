@@ -2,10 +2,11 @@ import 'package:changshengh5/api/SPClassApiManager.dart';
 import 'package:changshengh5/api/SPClassHttpCallBack.dart';
 import 'package:changshengh5/app/SPClassApplicaion.dart';
 import 'package:changshengh5/model/SPClassCoupon.dart';
-import 'package:changshengh5/untils/SPClassCommonMethods.dart';
-import 'package:changshengh5/untils/SPClassImageUtil.dart';
-import 'package:changshengh5/untils/SPClassStringUtils.dart';
-import 'package:changshengh5/untils/colors.dart';
+import 'package:changshengh5/pc_pages/recharge/pc_pay_page.dart';
+import 'package:changshengh5/utils/SPClassCommonMethods.dart';
+import 'package:changshengh5/utils/SPClassImageUtil.dart';
+import 'package:changshengh5/utils/SPClassStringUtils.dart';
+import 'package:changshengh5/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -265,11 +266,15 @@ class _PCRechargePageState extends State<PCRechargePage> {
                         context:context,
                         spProCallBack: SPClassHttpCallBack(
                           spProOnSuccess: (value){
-                            if(spProPayType=="weixin"){
-                              // launch(value.url!);
-                            }else if(spProPayType=="alipay"){
-                              // launch(value.url!);
-                            }
+                            // if(spProPayType=="weixin"){
+                            //   // launch(value.url!);
+                            // }else if(spProPayType=="alipay"){
+                            //   // launch(value.url!);
+                            // }
+
+                            showDialog(context: context, builder: (context){
+                              return PCPayPage(value.url!);
+                            });
 
 
                           },onError: (e){},spProOnProgress: (v){},

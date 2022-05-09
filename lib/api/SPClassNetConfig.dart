@@ -2,7 +2,7 @@
 import 'dart:io';
 
 import 'package:changshengh5/app/SPClassApplicaion.dart';
-import 'package:changshengh5/untils/SPClassCommonMethods.dart';
+import 'package:changshengh5/utils/SPClassCommonMethods.dart';
 
 class SPClassNetConfig {
 

@@ -1,11 +1,15 @@
 import 'package:changshengh5/app/SPClassApplicaion.dart';
+import 'package:changshengh5/pc_pages/mine/pc_expert_apply.dart';
 import 'package:changshengh5/pc_pages/mine/pc_follow_expert.dart';
-import 'package:changshengh5/untils/SPClassCommonMethods.dart';
-import 'package:changshengh5/untils/SPClassImageUtil.dart';
-import 'package:changshengh5/untils/SPClassStringUtils.dart';
-import 'package:changshengh5/untils/colors.dart';
+import 'package:changshengh5/pc_pages/mine/scheme/follow/pc_my_follow_scheme.dart';
+import 'package:changshengh5/utils/SPClassCommonMethods.dart';
+import 'package:changshengh5/utils/SPClassImageUtil.dart';
+import 'package:changshengh5/utils/SPClassStringUtils.dart';
+import 'package:changshengh5/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'scheme/buy/pc_my_buy_scheme.dart';
 
 class PCMine extends StatefulWidget {
   const PCMine({Key? key}) : super(key: key);
@@ -19,6 +23,19 @@ class _PCMineState extends State<PCMine> {
   var spProMyTitleImages = ["bug","follow_expert", "follow",'expert_apply'];
   int selectIndex = 0;
   PageController controller = PageController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if (SPClassApplicaion.spProUserLoginInfo!.spProExpertVerifyStatus == "1") {
+      spProMyTitles.remove("专家入驻");
+      spProMyTitleImages.remove("expert_apply");
+      spProMyTitles.add("我的发布");
+      spProMyTitleImages.add("expert_apply");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -131,10 +148,10 @@ class _PCMineState extends State<PCMine> {
             controller: controller,
             physics: NeverScrollableScrollPhysics(),
             children: [
-              Text('11111'),
+              PCMyBuyScheme(),
               PCFollowExpert(),
-              Text('33333'),
-              Text('4444'),
+              PCMyFollowScheme(),
+              spProMyTitles.contains('我的发布')?Container():PCExpertApply(),
             ],
           ))
         ],

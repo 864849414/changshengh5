@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:changshengh5/app/SPClassApplicaion.dart';
 import 'package:changshengh5/pages/common/SPClassLoadingPage.dart';
-import 'package:changshengh5/untils/SPClassCommonMethods.dart';
+import 'package:changshengh5/utils/SPClassCommonMethods.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

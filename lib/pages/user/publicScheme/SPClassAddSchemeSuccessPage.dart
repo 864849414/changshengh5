@@ -1,6 +1,7 @@
-import 'package:changshengh5/untils/SPClassCommonMethods.dart';
-import 'package:changshengh5/untils/SPClassImageUtil.dart';
-import 'package:changshengh5/untils/colors.dart';
+import 'package:changshengh5/utils/SPClassCommonMethods.dart';
+import 'package:changshengh5/utils/SPClassImageUtil.dart';
+import 'package:changshengh5/utils/colors.dart';
+
 import 'package:changshengh5/widgets/SPClassToolBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class SPClassAddSchemeSuccessPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
                 SizedBox(height:width(112),width: MediaQuery.of(context).size.width,),
-                Image.asset(SPClassImageUtil.spFunGetImagePath("ic_success_scheme"),width:width(54) ,),
+                Image.asset(SPClassImageUtil.spFunGetImagePath("cs_success_scheme"),width:width(54) ,),
                  SizedBox(height:width(29),width: MediaQuery.of(context).size.width,),
 
                 Text("您的方案提交成功，我们将在24小时内进行审核"+

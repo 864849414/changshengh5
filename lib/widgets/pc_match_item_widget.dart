@@ -1,10 +1,10 @@
 import 'package:changshengh5/model/SPClassGuessMatchInfo.dart';
-import 'package:changshengh5/untils/SPClassDateUtils.dart';
-import 'package:changshengh5/untils/SPClassImageUtil.dart';
-import 'package:changshengh5/untils/colors.dart';
+import 'package:changshengh5/utils/SPClassDateUtils.dart';
+import 'package:changshengh5/utils/SPClassImageUtil.dart';
+import 'package:changshengh5/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:changshengh5/untils/SPClassStringUtils.dart';
+import 'package:changshengh5/utils/SPClassStringUtils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PCMatchItemWidget extends StatefulWidget {

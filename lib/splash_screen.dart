@@ -5,10 +5,10 @@ import 'package:changshengh5/pages/SPClassSplashPage.dart';
 import 'package:changshengh5/pages/competition/SPClassMatchListSettingPage.dart';
 import 'package:changshengh5/pages/dialogs/SPClassPrivacyDialogDialog.dart';
 import 'package:changshengh5/pc_pages/pc_lead.dart';
-import 'package:changshengh5/untils/LocalStorage.dart';
-import 'package:changshengh5/untils/SPClassNavigatorUtils.dart';
-import 'package:changshengh5/untils/SPClassSharedPreferencesKeys.dart';
-import 'package:changshengh5/untils/common.dart';
+import 'package:changshengh5/utils/LocalStorage.dart';
+import 'package:changshengh5/utils/SPClassNavigatorUtils.dart';
+import 'package:changshengh5/utils/SPClassSharedPreferencesKeys.dart';
+import 'package:changshengh5/utils/common.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

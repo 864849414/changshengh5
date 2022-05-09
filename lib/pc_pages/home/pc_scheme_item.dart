@@ -1,15 +1,16 @@
 import 'package:changshengh5/model/SPClassSchemeListEntity.dart';
-import 'package:changshengh5/untils/SPClassDateUtils.dart';
-import 'package:changshengh5/untils/SPClassImageUtil.dart';
-import 'package:changshengh5/untils/SPClassMatchDataUtils.dart';
-import 'package:changshengh5/untils/SPClassStringUtils.dart';
-import 'package:changshengh5/untils/colors.dart';
+import 'package:changshengh5/utils/SPClassDateUtils.dart';
+import 'package:changshengh5/utils/SPClassImageUtil.dart';
+import 'package:changshengh5/utils/SPClassMatchDataUtils.dart';
+import 'package:changshengh5/utils/SPClassStringUtils.dart';
+import 'package:changshengh5/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PCSchemeItem extends StatefulWidget {
   SPClassSchemeListSchemeList ?data;
-  PCSchemeItem({Key? key,this.data}) : super(key: key);
+  bool spProShowRate;
+  PCSchemeItem({Key? key,this.data,this.spProShowRate=true}) : super(key: key);
 
   @override
   _PCSchemeItemState createState() => _PCSchemeItemState();
