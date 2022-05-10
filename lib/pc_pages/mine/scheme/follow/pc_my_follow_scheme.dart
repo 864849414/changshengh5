@@ -12,15 +12,15 @@ class PCMyFollowScheme extends StatefulWidget {
 }
 
 class _PCMyFollowSchemeState extends State<PCMyFollowScheme> with TickerProviderStateMixin{
-  List csProTabTitle=["未结束","已结束"];
-  TabController ?csProTabController;
+  List spProTabTitle=["未结束","已结束"];
+  TabController ?spProTabController;
   List<Widget> ?views;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    csProTabController=TabController(length: csProTabTitle.length,vsync: this);
+    spProTabController=TabController(length: spProTabTitle.length,vsync: this);
     views=[PCFollowSchemeList("0"),PCFollowSchemeList("1")];
 
   }
@@ -45,16 +45,16 @@ class _PCMyFollowSchemeState extends State<PCMyFollowScheme> with TickerProvider
                 indicatorColor: MyColors.main1,
                 labelStyle: TextStyle(fontSize: sp(18),fontWeight: FontWeight.bold),
                 unselectedLabelStyle: TextStyle(fontSize: sp(18),fontWeight: FontWeight.w400),
-                controller: csProTabController,
+                controller: spProTabController,
                 indicatorSize: TabBarIndicatorSize.label,
-                tabs:csProTabTitle.map((e){
+                tabs:spProTabTitle.map((e){
                   return Tab(text: e,);
                 }).toList()
             ),
           ),
           Expanded(
             child: TabBarView(
-              controller: csProTabController,
+              controller: spProTabController,
               children:views!,
             ),
           )

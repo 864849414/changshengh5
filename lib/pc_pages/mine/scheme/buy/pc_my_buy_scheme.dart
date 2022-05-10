@@ -12,15 +12,15 @@ class PCMyBuyScheme extends StatefulWidget {
 }
 
 class _PCMyBuySchemeState extends State<PCMyBuyScheme> with TickerProviderStateMixin{
-  List csProTabTitle=["未结束","已结束"];
-  TabController ?csProTabController;
+  List spProTabTitle=["未结束","已结束"];
+  TabController ?spProTabController;
   List<Widget> ?views;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    csProTabController=TabController(length: csProTabTitle.length,vsync: this);
+    spProTabController=TabController(length: spProTabTitle.length,vsync: this);
     views=[PCBuySchemeList("0"),PCBuySchemeList("1")];
 
   }
@@ -45,16 +45,16 @@ class _PCMyBuySchemeState extends State<PCMyBuyScheme> with TickerProviderStateM
                 indicatorColor: MyColors.main1,
                 labelStyle: TextStyle(fontSize: sp(18),fontWeight: FontWeight.bold),
                 unselectedLabelStyle: TextStyle(fontSize: sp(18),fontWeight: FontWeight.w400),
-                controller: csProTabController,
+                controller: spProTabController,
                 indicatorSize: TabBarIndicatorSize.label,
-                tabs:csProTabTitle.map((e){
+                tabs:spProTabTitle.map((e){
                   return Tab(text: e,);
                 }).toList()
             ),
           ),
           Expanded(
             child: TabBarView(
-              controller: csProTabController,
+              controller: spProTabController,
               children:views!,
             ),
           )

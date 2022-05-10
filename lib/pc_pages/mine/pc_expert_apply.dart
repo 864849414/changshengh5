@@ -39,7 +39,6 @@ class _PCExpertApplyState extends State<PCExpertApply> {
     // TODO: implement initState
     super.initState();
     spProExpertVerifyStatus = SPClassApplicaion.spProUserLoginInfo!.spProExpertVerifyStatus!;
-    print('哈哈哈：${spProExpertVerifyStatus}');
   }
 
 
@@ -113,7 +112,7 @@ class _PCExpertApplyState extends State<PCExpertApply> {
                           borderRadius: BorderRadius.circular(12),
                           color: spProExpertType == '足球'
                               ? MyColors.main1
-                              : Color(0xFFF5F6F7)),
+                              : Color(0xFFF0F1F2)),
                       child: Text(
                         '足球',
                         style: TextStyle(
@@ -140,7 +139,7 @@ class _PCExpertApplyState extends State<PCExpertApply> {
                           borderRadius: BorderRadius.circular(12),
                           color: spProExpertType == '篮球'
                               ? MyColors.main1
-                              : Color(0xFFF5F6F7)),
+                              : Color(0xFFF0F1F2)),
                       child: Text(
                         '篮球',
                         style: TextStyle(
@@ -291,12 +290,15 @@ class _PCExpertApplyState extends State<PCExpertApply> {
                               fit: BoxFit.contain,
                               width: width(36),
                             )
-                                : Image.file(
-                              spProFrontFile!,
-                              width: width(207),
+                                :Image.network(spProFrontFile!.path,width: width(207),
                               height: height(134),
-                              fit: BoxFit.cover,
-                            ),
+                              fit: BoxFit.cover,)
+                            //     : Image.file(
+                            //   spProFrontFile!,
+                            //   width: width(207),
+                            //   height: height(134),
+                            //   fit: BoxFit.cover,
+                            // ),
                           ),
                           onTap: () async {
                             final ImagePicker _picker = ImagePicker();
@@ -334,14 +336,18 @@ class _PCExpertApplyState extends State<PCExpertApply> {
                               fit: BoxFit.contain,
                               width: width(36),
                             )
-                                : Image.file(
-                              spProBackFile!,
-                              width: width(207),
+                                :Image.network(spProBackFile!.path,width: width(207),
                               height: height(134),
-                              fit: BoxFit.cover,
-                            ),
+                              fit: BoxFit.cover,)
+                            //     : Image.file(
+                            //   spProBackFile!,
+                            //   width: width(207),
+                            //   height: height(134),
+                            //   fit: BoxFit.cover,
+                            // ),
                           ),
                           onTap: () async {
+
                             final ImagePicker _picker = ImagePicker();
                             XFile? xImage = await _picker.pickImage(
                                 source: ImageSource.gallery);

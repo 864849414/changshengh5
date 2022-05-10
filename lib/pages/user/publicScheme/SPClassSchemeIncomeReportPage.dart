@@ -98,7 +98,7 @@ class SPClassSchemeIncomeReportPageState extends State<SPClassSchemeIncomeReport
                          child: Row(
                            children: <Widget>[
                              Text("订单明细",style: TextStyle(fontSize: sp(11),color:Color(0xFF888888) ),),
-                             SPClassEncryptImage.asset(SPClassImageUtil.spFunGetImagePath("cs_btn_right"),
+                             SPClassEncryptImage.asset(SPClassImageUtil.spFunGetImagePath("ic_btn_right"),
                                width: width(11),
                              ),
                            ],

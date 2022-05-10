@@ -82,8 +82,8 @@ class SPClassMyAddSchemeListPageState extends State<SPClassMyAddSchemeListPage> 
                           right:  width(13) ,
                           top:width(10),
                           child: Image.asset(
-                            (schemeItem.spProVerifyStatus=="0")? SPClassImageUtil.spFunGetImagePath("cs_verify_ing"):
-                            (schemeItem.spProVerifyStatus=="-1")? SPClassImageUtil.spFunGetImagePath("cs_verify_bad"): "",
+                            (schemeItem.spProVerifyStatus=="0")? SPClassImageUtil.spFunGetImagePath("ic_verify_ing"):
+                            (schemeItem.spProVerifyStatus=="-1")? SPClassImageUtil.spFunGetImagePath("ic_verify_bad"): "",
                             width: width(46),
                           ),
                         ),
@@ -91,9 +91,9 @@ class SPClassMyAddSchemeListPageState extends State<SPClassMyAddSchemeListPage> 
                           top: 10,
                           right:  width(13) ,
                           child: Image.asset(
-                            (schemeItem.spProIsWin=="1")? SPClassImageUtil.spFunGetImagePath("cs_result_red"):
-                            (schemeItem.spProIsWin=="0")? SPClassImageUtil.spFunGetImagePath("cs_result_hei"):
-                            (schemeItem.spProIsWin=="2")? SPClassImageUtil.spFunGetImagePath("cs_result_zou"):"",
+                            (schemeItem.spProIsWin=="1")? SPClassImageUtil.spFunGetImagePath("ic_result_red"):
+                            (schemeItem.spProIsWin=="0")? SPClassImageUtil.spFunGetImagePath("ic_result_hei"):
+                            (schemeItem.spProIsWin=="2")? SPClassImageUtil.spFunGetImagePath("ic_result_zou"):"",
                             width: width(46),
                           ),
                         ),

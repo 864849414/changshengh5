@@ -44,7 +44,7 @@ class SPClassMyAddSchemePageState extends State<SPClassMyAddSchemePage> with Tic
             child: Row(
               children: <Widget>[
 
-                // SPClassEncryptImage.asset(SPClassImageUtil.spFunGetImagePath("cs_shceme_public"),width: width(14),),
+                // SPClassEncryptImage.asset(SPClassImageUtil.spFunGetImagePath("ic_shceme_public"),width: width(14),),
                 SizedBox(width: width(3),),
                 Text("去发布",style: TextStyle(color: Colors.white,fontSize: sp(13)),),
                 SizedBox(width:width(15) ,),
@@ -95,7 +95,7 @@ class SPClassMyAddSchemePageState extends State<SPClassMyAddSchemePage> with Tic
                        //      behavior: HitTestBehavior.opaque,
                        //      child: Container(
                        //        padding: EdgeInsets.all(3),
-                       //        child: SPClassEncryptImage.asset(SPClassImageUtil.spFunGetImagePath("cs_rulu_tip"),width: width(12),),
+                       //        child: SPClassEncryptImage.asset(SPClassImageUtil.spFunGetImagePath("ic_rulu_tip"),width: width(12),),
                        //      ),
                        //      onTap: (){
                        //        showDialog(context: context,child: SPClassAddSchemeRuleTipDialog(callback: (){

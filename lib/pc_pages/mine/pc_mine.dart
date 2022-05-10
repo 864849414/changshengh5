@@ -1,6 +1,7 @@
 import 'package:changshengh5/app/SPClassApplicaion.dart';
 import 'package:changshengh5/pc_pages/mine/pc_expert_apply.dart';
 import 'package:changshengh5/pc_pages/mine/pc_follow_expert.dart';
+import 'package:changshengh5/pc_pages/mine/publicScheme/pc_my_add_scheme.dart';
 import 'package:changshengh5/pc_pages/mine/scheme/follow/pc_my_follow_scheme.dart';
 import 'package:changshengh5/utils/SPClassCommonMethods.dart';
 import 'package:changshengh5/utils/SPClassImageUtil.dart';
@@ -151,7 +152,7 @@ class _PCMineState extends State<PCMine> {
               PCMyBuyScheme(),
               PCFollowExpert(),
               PCMyFollowScheme(),
-              spProMyTitles.contains('我的发布')?Container():PCExpertApply(),
+              !spProMyTitles.contains('我的发布')?PCMyAddScheme():PCExpertApply(),
             ],
           ))
         ],

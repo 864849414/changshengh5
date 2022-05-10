@@ -870,7 +870,7 @@ class SPClassPublicSchemePageState extends State<SPClassPublicSchemePage> {
                                   ),
                                   Image.asset(
                                     SPClassImageUtil.spFunGetImagePath(
-                                      "cs_up_arrow",
+                                      "ic_up_arrow",
                                     ),
                                     width: width(13),
                                   )

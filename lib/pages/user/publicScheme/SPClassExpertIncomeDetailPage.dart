@@ -186,7 +186,7 @@ class SPClassExpertIncomeDetailPageState extends State<SPClassExpertIncomeDetail
                                   child: Center(
                                     child:(item.spProVerifyStatus =="-1")?
                                     Image.asset(
-                                      SPClassImageUtil.spFunGetImagePath("cs_scheme_exption",),
+                                      SPClassImageUtil.spFunGetImagePath("ic_scheme_exption",),
                                       width: width(19),):
                                     Container(
                                       padding: EdgeInsets.symmetric(vertical:width(3)),
