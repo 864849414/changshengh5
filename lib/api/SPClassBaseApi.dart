@@ -141,7 +141,7 @@ class SPClassBaseApi{
             response = await httpManager.post(url!, data: formData,onSendProgress: (int count, int total){
               if(total>0&&count>0){
                 if(spProCallBack!=null&&spProCallBack.spProOnProgress!=null){
-                  spProCallBack.spProOnProgress(count/total);
+                  spProCallBack.spProOnProgress!(count/total);
                 }
               }
             },options: Options(
@@ -154,7 +154,7 @@ class SPClassBaseApi{
              response=await httpManager.download(url!,savePath,onReceiveProgress: (int count, int total){
                if(total>0&&count>0){
                  if(spProCallBack!=null&&spProCallBack.spProOnProgress!=null){
-                   spProCallBack.spProOnProgress(count/total);
+                   spProCallBack.spProOnProgress!(count/total);
                  }
                }
              },options: Options(
@@ -231,14 +231,14 @@ class SPClassBaseApi{
       }
       if(result!.spFunIsSuccess()){
         if(spProCallBack!=null&&spProCallBack.spProOnSuccess!=null){
-          spProCallBack.spProOnSuccess(result.spFunGetObject<T>(object: jsonObject)!);
+          spProCallBack.spProOnSuccess!(result.spFunGetObject<T>(object: jsonObject)!);
         }
       }
 
       if(result.spFunIsFail()){
         SPClassLogUtils.spFunPrintLog("Fail: ${result.msg}  ${url!.trim()}");
         if(spProCallBack!=null&&spProCallBack.onError!=null){
-          spProCallBack.onError(result);
+          spProCallBack.onError!(result);
         }
       }
     }
@@ -251,7 +251,7 @@ class SPClassBaseApi{
       basicParam["oauth_token"] =userLoginInfo==null? "":userLoginInfo!.spProOauthToken;
       basicParam["app_id"] =AppId;
       basicParam["channel_id"] =ChannelId;
-      basicParam["app_version"] ='';
+      basicParam["app_version"] ='1.0.0';
       basicParam["sydid"] = '';
       basicParam["did"] ='';
 

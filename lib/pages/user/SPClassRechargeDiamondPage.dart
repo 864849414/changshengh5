@@ -447,13 +447,13 @@ class SPClassRechargeDiamondPageState extends State<SPClassRechargeDiamondPage> 
                     text: TextSpan(text: "温馨提示:"+
                         "\n\n",style: TextStyle(fontSize: sp(13),color: Color(0xFF888888)),
                         children: [
-                          TextSpan(text: "1.常胜体育",style: TextStyle(fontSize: sp(12),color: Color(0xFF888888))),
+                          TextSpan(text: "1.辉讯体育",style: TextStyle(fontSize: sp(12),color: Color(0xFF888888))),
                           TextSpan(text: "非购彩平台",style: TextStyle(fontSize: sp(12),color: Color(0xFFDE3C31))),
                           TextSpan(text: "，充值所得钻石只可用于购买专家推荐方案，",style: TextStyle(fontSize: sp(12),color: Color(0xFF888888))),
                           TextSpan(text: "不支持提现、购彩等操作；"+
                               "\n\n",style: TextStyle(fontSize: sp(12),color: Color(0xFFDE3C31))),
-                          TextSpan(text: "2.如在充值过程或购买方案过程中遇到问题，请及时联系常胜体育客服。（客服微信号：",style: TextStyle(fontSize: sp(12),color: Color(0xFF888888))),
-                          TextSpan(text: "kk_lzy",style: TextStyle(fontSize: sp(12),color: Color(0xFFDE3C31)),recognizer: new TapGestureRecognizer(
+                          TextSpan(text: "2.如在充值过程或购买方案过程中遇到问题，请及时联系辉讯体育客服。（客服微信号：",style: TextStyle(fontSize: sp(12),color: Color(0xFF888888))),
+                          TextSpan(text: "864849414",style: TextStyle(fontSize: sp(12),color: Color(0xFFDE3C31)),recognizer: new TapGestureRecognizer(
                           )..onTap=(){
                             // 标签
                            // SPClassNavigatorUtils.spFunPushRoute(context, SPClassContactPage());
@@ -535,7 +535,7 @@ class SPClassRechargeDiamondPageState extends State<SPClassRechargeDiamondPage> 
                                   )
                                 ]
                             ),),
-                            Image.asset(ImageUtil.getImagePath("ic_btn_right"),
+                            Image.asset(SPClassImageUtil.getImagePath("ic_btn_right"),
                               width: width(11),
                             ),
 
@@ -555,7 +555,7 @@ class SPClassRechargeDiamondPageState extends State<SPClassRechargeDiamondPage> 
                                   },
                                 ));
                           }else{
-                            ToastUtils.showToast(msg: "当前没有可用的优惠券");
+                            SPClassToastUtils.showToast(msg: "当前没有可用的优惠券");
                           }
                         },
                       ),
@@ -576,8 +576,8 @@ class SPClassRechargeDiamondPageState extends State<SPClassRechargeDiamondPage> 
                   ) ,
                 ),
                 onTap: () async {
-
-
+                  SPClassToastUtils.spFunShowToast(msg: "充值请联系客服，半价优惠哦~");
+                  return;
                   String? value;
                   if(rechargeString[spProSelectIndex]["in_put"] ==true){
                     value=spProTextEditingController!.text;

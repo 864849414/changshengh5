@@ -29,7 +29,7 @@ class SPClassVideoLoginPage extends StatefulWidget {
 class SPClassVideoLoginPageState extends State<SPClassVideoLoginPage>
     with WidgetsBindingObserver {
   int spProLoginType = 0; //0--验证码登录 1--密码登录 2==一键登录
-  late VideoPlayerController _videoPlayerController;
+  // late VideoPlayerController _videoPlayerController;
   bool spProIsKeyBoardShow = false;
   bool spProIsShowPassWord = false;
   String spProPhoneNum = "";
@@ -49,14 +49,14 @@ class SPClassVideoLoginPageState extends State<SPClassVideoLoginPage>
     super.initState();
 
     _textEditingController = TextEditingController(text: spProPhoneNum);
-    _videoPlayerController =
-        VideoPlayerController.asset('assets/video/video_login.m4v')
-          ..initialize().then((_) {
-            // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-            setState(() {});
-          });
-    _videoPlayerController.setLooping(true);
-    _videoPlayerController.play();
+    // _videoPlayerController =
+    //     VideoPlayerController.asset('assets/video/video_login.m4v')
+    //       ..initialize().then((_) {
+    //         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+    //         setState(() {});
+    //       });
+    // _videoPlayerController.setLooping(true);
+    // _videoPlayerController.play();
     WidgetsBinding.instance!.addObserver(this);
 
     ///备注APP使用
@@ -86,7 +86,7 @@ class SPClassVideoLoginPageState extends State<SPClassVideoLoginPage>
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    _videoPlayerController.dispose();
+    // _videoPlayerController.dispose();
     WidgetsBinding.instance!.removeObserver(this);
     if (spProTimer != null) {
       spProTimer?.cancel();
@@ -117,21 +117,21 @@ class SPClassVideoLoginPageState extends State<SPClassVideoLoginPage>
       body: Container(
         child: Stack(
           children: <Widget>[
-            Container(
-                child: _videoPlayerController.value.isInitialized
-                    ? Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.width /
-                            _videoPlayerController.value.aspectRatio,
-                        child: VideoPlayer(_videoPlayerController),
-                      )
-                    : SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height)),
+            // Container(
+            //     child: _videoPlayerController.value.isInitialized
+            //         ? Container(
+            //             width: MediaQuery.of(context).size.width,
+            //             height: MediaQuery.of(context).size.width /
+            //                 _videoPlayerController.value.aspectRatio,
+            //             child: VideoPlayer(_videoPlayerController),
+            //           )
+            //         : SizedBox(
+            //             width: MediaQuery.of(context).size.width,
+            //             height: MediaQuery.of(context).size.height)),
             Container(
               child: Image.asset(
                 SPClassImageUtil.spFunGetImagePath('login_bg'),
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
               ),

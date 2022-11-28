@@ -1,9 +1,12 @@
 class SPClassUserSchemeListEntity {
 	List<SPClassUserSchemeListUserSchemeList> ?spProUserSchemeList;
 
-	SPClassUserSchemeListEntity({this.spProUserSchemeList});
-
-	SPClassUserSchemeListEntity.fromJson(Map<String, dynamic> json) {
+  SPClassUserSchemeListEntity({Map<String, dynamic>? json}) {
+    if (json != null) {
+      fromJson(json);
+    }
+  }
+	fromJson(Map<String, dynamic> json) {
 		if (json["user_scheme_list"] != null) {
 			spProUserSchemeList = [];(json["user_scheme_list"] as List).forEach((v) { spProUserSchemeList?.add(new SPClassUserSchemeListUserSchemeList.fromJson(v)); });
 		}

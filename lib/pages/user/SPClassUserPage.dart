@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:changshengh5/app/SPClassApplicaion.dart';
 import 'package:changshengh5/pages/competition/scheme/SPClassExpertApplyPage.dart';
+import 'package:changshengh5/pages/user/invite/InvitePage.dart';
 import 'package:changshengh5/pages/user/publicScheme/SPClassMyAddSchemePage.dart';
 import 'package:changshengh5/pages/user/scheme/bug/SPClassMyBuySchemePage.dart';
 import 'package:changshengh5/pages/user/scheme/follow/SPClassMyFollowSchemePage.dart';
@@ -32,11 +33,11 @@ class SPClassUserPage extends StatefulWidget {
 
 class SPClassUserPageState extends State<SPClassUserPage>
     with AutomaticKeepAliveClientMixin, TickerProviderStateMixin {
-  var spProMyTitles = ["已购方案", "关注专家","关注方案", '专家入驻'];
+  var spProMyTitles = ["已购方案", "关注专家","关注方案", '邀请大礼'];
   var spProMyTitleImages = ["bug","follow_expert", "follow",'expert_apply'];
   var spProOtherTitles = [
     // "邀请好友", web没有分享
-    "新人福利",
+    // "新人福利",
     /*"抽奖",*/
     "系统消息",
     "联系客服",
@@ -46,7 +47,7 @@ class SPClassUserPageState extends State<SPClassUserPage>
   ];
   var spProOtherImages = [
     // "invite", web没有分享
-    "new",
+    // "new",
 /*"turntable",*/
     "sys",
     "contact",
@@ -75,10 +76,10 @@ class SPClassUserPageState extends State<SPClassUserPage>
           spProMyTitleImages.add("send");
         } else {
           spProMyTitles.remove("我的发布");
-          spProMyTitles.remove("专家入驻");
-          spProMyTitleImages.remove("expert_apply");
-          spProMyTitles.add("专家入驻");
-          spProMyTitleImages.add("expert_apply");
+          // spProMyTitles.remove("专家入驻");
+          // spProMyTitleImages.remove("expert_apply");
+          // spProMyTitles.add("专家入驻");
+          // spProMyTitleImages.add("expert_apply");
         }
         if (mounted) {
           setState(() {});
@@ -571,6 +572,9 @@ class SPClassUserPageState extends State<SPClassUserPage>
     }
     if (value == "我的发布") {
       SPClassNavigatorUtils.spFunPushRoute(context, SPClassMyAddSchemePage());
+    }
+    if (value == "邀请大礼") {
+      SPClassNavigatorUtils.spFunPushRoute(context, InvitePage());
     }
   }
 }

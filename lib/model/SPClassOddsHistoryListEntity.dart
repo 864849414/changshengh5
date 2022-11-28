@@ -1,9 +1,12 @@
 class SPClassOddsHistoryListEntity {
 	List<SPClassOddsHistoryListOddsHistoryList> ?spProOddsHistoryList;
 
-	SPClassOddsHistoryListEntity({this.spProOddsHistoryList});
-
-	SPClassOddsHistoryListEntity.fromJson(Map<String, dynamic> json) {
+	SPClassOddsHistoryListEntity({Map<String, dynamic>? json}) {
+		if (json != null) {
+			fromJson(json);
+		}
+	}
+	fromJson(Map<String, dynamic> json) {
 		if (json["odds_history_list"] != null) {
 			spProOddsHistoryList = [];(json["odds_history_list"] as List).forEach((v) { spProOddsHistoryList?.add(new SPClassOddsHistoryListOddsHistoryList.fromJson(v)); });
 		}

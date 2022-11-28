@@ -17,6 +17,7 @@ class SPClassUserInfo  {
   late String spProLockNickName;
   late String spProMoney;
   late String spProTotalMoney;
+  late String invitePhone;
   SPClassUserInfo({json}){
     if(json!=null){
       fromJson(json);
@@ -45,6 +46,7 @@ class SPClassUserInfo  {
      spProLockNickName=userJson["lock_nick_name"].toString();
      spProMoney=userJson["money"].toString();
      spProTotalMoney=userJson["total_money"].toString();
+    invitePhone=userJson["invite_phone"].toString();
 
 
 

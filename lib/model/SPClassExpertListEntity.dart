@@ -2,9 +2,12 @@ class SPClassExpertListEntity {
 	List<SPClassExpertListExpertList> ?spProExpertList;
 
 
-  SPClassExpertListEntity({this.spProExpertList});
-
-	SPClassExpertListEntity.fromJson(Map<String, dynamic> json) {
+	SPClassExpertListEntity({Map<String, dynamic>? json}) {
+		if (json != null) {
+			fromJson(json);
+		}
+	}
+	fromJson(Map<String, dynamic> json) {
 		if (json['expert_list'] != null) {
 			spProExpertList = [];(json['expert_list'] as List).forEach((v) { spProExpertList!.add(new SPClassExpertListExpertList.fromJson(v)); });
 		}

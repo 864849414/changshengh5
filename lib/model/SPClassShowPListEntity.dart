@@ -7,9 +7,12 @@ class SPClassShowPListEntity {
 	bool ?spProOfficialPayOnly;
   Map<String,dynamic> ?spProMoney2Diamond;
 
-	SPClassShowPListEntity({this.spProPayList, this.spProOfficialPayOnly});
-
-	SPClassShowPListEntity.fromJson(Map<String, dynamic> json) {
+	SPClassShowPListEntity({Map<String, dynamic>? json}) {
+		if (json != null) {
+			fromJson(json);
+		}
+	}
+	fromJson(Map<String, dynamic> json) {
 		if (json["pay_list"] != null) {
 			spProPayList = [];(json["pay_list"] as List).forEach((v) { spProPayList?.add(new SPClassShowPListPayList.fromJson(v)); });
 		}

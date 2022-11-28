@@ -91,25 +91,27 @@ class SPClassBaseModelEntity {
      print('GenerateOBJ  $T');
     if (T.toString() == this.runtimeType.toString()) {
       return this as T;
-    } else if (T.toString() == "SPClassSchemeDetailEntity\$") {
-      return SPClassSchemeDetailEntity.fromJson(json) as T;
-    }else if (T.toString() == "SPClassSsOddsList\$") {
-      return SPClassSsOddsList.fromJson(json) as T;
-    } else if (T.toString() == "SPClassAnylizeMatchList\$") {
-      return SPClassAnylizeMatchList.fromJson(json) as T;
-    } else if (T.toString() == "SPClassCreatOrderEntity\$"||T.toString() =='minified:zi') {
-      return SPClassCreatOrderEntity.fromJson(json) as T;
-    } else if (T.toString() == "SPClassExpertListEntity\$") {  //web端多个 \$
-      return SPClassExpertListEntity.fromJson(json) as T;
-    }else if (T.toString() == "SPClassSchemeListEntity\$") {
-      return SPClassSchemeListEntity.fromJson(json) as T;
-    } else if (T.toString() == "SPClassUserSchemeListEntity\$") {
-      return SPClassUserSchemeListEntity.fromJson(json) as T;
-    } else if (T.toString() == "SPClassOddsHistoryListEntity\$") {
-      return SPClassOddsHistoryListEntity.fromJson(json) as T;
-    }else if (T.toString() == "SPClassShowPListEntity\$") {
-      return SPClassShowPListEntity.fromJson(json) as T;
-    } else if (object!=null) {
+    }
+    // else if (T.toString() == "SPClassSchemeDetailEntity\$") {
+    //   return SPClassSchemeDetailEntity.fromJson(json) as T;
+    // }else if (T.toString() == "SPClassSsOddsList\$") {
+    //   return SPClassSsOddsList.fromJson(json) as T;
+    // } else if (T.toString() == "SPClassAnylizeMatchList\$") {
+    //   return SPClassAnylizeMatchList.fromJson(json) as T;
+    // } else if (T.toString() == "SPClassCreatOrderEntity\$"||T.toString() =='minified:zi') {
+    //   return SPClassCreatOrderEntity.fromJson(json) as T;
+    // } else if (T.toString() == "SPClassExpertListEntity\$") {  //web端多个 \$
+    //   return SPClassExpertListEntity.fromJson(json) as T;
+    // }else if (T.toString() == "SPClassSchemeListEntity\$") {
+    //   return SPClassSchemeListEntity.fromJson(json) as T;
+    // } else if (T.toString() == "SPClassUserSchemeListEntity\$") {
+    //   return SPClassUserSchemeListEntity.fromJson(json) as T;
+    // } else if (T.toString() == "SPClassOddsHistoryListEntity\$") {
+    //   return SPClassOddsHistoryListEntity.fromJson(json) as T;
+    // }else if (T.toString() == "SPClassShowPListEntity\$") {
+    //   return SPClassShowPListEntity.fromJson(json) as T;
+    // }
+    else if (object!=null) {
       object.fromJson(json);
       return object as T;
     }

@@ -464,7 +464,7 @@ class SPClassSchemeItemView extends StatelessWidget {
                             item.spProDiamond == "0" ||
                             item.spProIsBought == "1")
                         ? Text(
-                            '免费',
+                            '查看',
                             style: TextStyle(
                                 color: Color(0xFF4D97FF), fontSize: sp(14)),
                           )

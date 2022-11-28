@@ -7,8 +7,12 @@ class SPClassSsOddsList {
 	List<SPClassSsOddsItem> spProListLOLSF=[];
 	List<SPClassSsOddsItem> spProListLOLRF=[];
 
-
-	SPClassSsOddsList.fromJson(Map<String, dynamic> jsonOrg) {
+	SPClassSsOddsList({Map<String, dynamic>? json}) {
+		if (json != null) {
+			fromJson(json);
+		}
+	}
+	fromJson(Map<String, dynamic> jsonOrg) {
 
 	  if(jsonOrg["odds_list"]!=null){
 	    var json= jsonOrg["odds_list"];

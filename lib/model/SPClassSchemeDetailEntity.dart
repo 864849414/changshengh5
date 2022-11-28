@@ -7,9 +7,12 @@ class SPClassSchemeDetailEntity {
 	bool ?spProIsBought;
 	int ?spProCanViewAll;
 
-	SPClassSchemeDetailEntity();
-
-	SPClassSchemeDetailEntity.fromJson(Map<String, dynamic> json) {
+	SPClassSchemeDetailEntity({Map<String, dynamic>? json}) {
+		if (json != null) {
+			fromJson(json);
+		}
+	}
+	fromJson(Map<String, dynamic> json) {
 		scheme = json["scheme"] != null ? new SPClassSchemeDetailScheme.fromJson(json["scheme"]) : null;
 		spProGuessMatch = json["guess_match"] != null ? new SPClassGuessMatchInfo(json: json["guess_match"]) : null;
 		spProIsBought = json["is_bought"];

@@ -296,12 +296,12 @@ class _PCRechargePageState extends State<PCRechargePage> {
               text: TextSpan(text: "温馨提示:"+
                   "\n\n",style: TextStyle(fontSize: sp(18),),
                   children: [
-                    TextSpan(text: "1.常胜体育",style: TextStyle(fontSize: sp(16),)),
+                    TextSpan(text: "1.辉讯体育",style: TextStyle(fontSize: sp(16),)),
                     TextSpan(text: "非购彩平台",style: TextStyle(fontSize: sp(16),color: Color(0xFFDE3C31))),
                     TextSpan(text: "，充值所得钻石只可用于购买专家推荐方案，",style: TextStyle(fontSize: sp(16),)),
                     TextSpan(text: "不支持提现、购彩等操作；"+
                         "\n\n",style: TextStyle(fontSize: sp(16),color: Color(0xFFDE3C31))),
-                    TextSpan(text: "2.如在充值过程或购买方案过程中遇到问题，请及时联系常胜体育客服。",style: TextStyle(fontSize: sp(16),)),
+                    TextSpan(text: "2.如在充值过程或购买方案过程中遇到问题，请及时联系辉讯体育客服。",style: TextStyle(fontSize: sp(16),)),
                     TextSpan(text: ")"+
                         "\n\n",style: TextStyle(fontSize: sp(16),)),
                     TextSpan(text: "3.提示若微信支付异常，请尝试支付宝支付",style: TextStyle(fontSize: sp(16),)),

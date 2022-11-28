@@ -21,11 +21,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:video_player/video_player.dart';
 
 class SPClassVideoPhoneLoginPage extends StatefulWidget {
-  VideoPlayerController? spProVideoPlayerController;
+  // VideoPlayerController? spProVideoPlayerController;
   int? spProPhoneType; //0== 绑定手机号 1==找回密码
   String? spProBindSid;
   SPClassVideoPhoneLoginPage(
-      {this.spProVideoPlayerController,
+      {
+        // this.spProVideoPlayerController,
       this.spProPhoneType,
       this.spProBindSid});
 
@@ -82,22 +83,22 @@ class SPClassVideoPhoneLoginPageState extends State<SPClassVideoPhoneLoginPage>
       body: Container(
         child: Stack(
           children: <Widget>[
-            Container(
-                child: widget.spProVideoPlayerController!.value.isInitialized
-                    ? Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.width /
-                            widget
-                                .spProVideoPlayerController!.value.aspectRatio,
-                        child: VideoPlayer(widget.spProVideoPlayerController!),
-                      )
-                    : SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height)),
+            // Container(
+            //     child: widget.spProVideoPlayerController!.value.isInitialized
+            //         ? Container(
+            //             width: MediaQuery.of(context).size.width,
+            //             height: MediaQuery.of(context).size.width /
+            //                 widget
+            //                     .spProVideoPlayerController!.value.aspectRatio,
+            //             child: VideoPlayer(widget.spProVideoPlayerController!),
+            //           )
+            //         : SizedBox(
+            //             width: MediaQuery.of(context).size.width,
+            //             height: MediaQuery.of(context).size.height)),
             Container(
               child: Image.asset(
                 SPClassImageUtil.spFunGetImagePath('login_bg'),
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
               ),

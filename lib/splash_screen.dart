@@ -32,7 +32,8 @@ class _SplashScreenState extends State<SplashScreen> {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       color: Colors.white,
-      child:isPC ?PCLead():SPClassAppPage(),
+      child:SPClassAppPage(),
+      // child:isPC ?PCLead():SPClassAppPage(),
     );
   }
 

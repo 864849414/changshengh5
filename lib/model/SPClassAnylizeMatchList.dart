@@ -9,9 +9,12 @@ class SPClassAnylizeMatchList {
 	List<SPClassEntityHistory> ?history;
 	List<SPClassTeamList> ?team_list;
 
-	SPClassAnylizeMatchList({this.spProTeamOneFuture, this.spProTeamTwoHistory, this.spProTeamPointsList, this.spProTeamOneHistory, this.spProTeamTwoFuture, this.spProMatchExist, this.history});
-
-	SPClassAnylizeMatchList.fromJson(Map<String, dynamic> json) {
+	SPClassAnylizeMatchList({Map<String, dynamic>? json}) {
+		if (json != null) {
+			fromJson(json);
+		}
+	}
+	fromJson(Map<String, dynamic> json) {
 		if (json['team_one_future'] != null) {
 			spProTeamOneFuture = [];(json['team_one_future'] as List).forEach((v) { spProTeamOneFuture!.add(new SPClassEntityHistory.fromJson(v)); });
 		}

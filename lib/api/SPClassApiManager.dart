@@ -351,10 +351,10 @@ class SPClassApiManager extends SPClassBaseApi{
     spFunGet<SPClassUserInfo>(jsonObject:new SPClassUserInfo(),url: DO_USER_INFO,queryParameters:{},isToast: false,spProIsLoading: false,isBaseParams: true, spProCallBack: spProCallBack ,context: context);
   }
   spFunMatchOddsList({Map<String,dynamic>? queryParameters,SPClassHttpCallBack<SPClassSsOddsList>? spProCallBack}){
-    spFunGet(url: spProMATCH_ODDS_LIST,queryParameters:queryParameters,spProCallBack: spProCallBack );
+    spFunGet(url: spProMATCH_ODDS_LIST,jsonObject:SPClassSsOddsList(),queryParameters:queryParameters,spProCallBack: spProCallBack );
   }
   spFunMatchAnalyse({Map<String,dynamic> ?queryParameters,SPClassHttpCallBack<SPClassAnylizeMatchList> ?spProCallBack}){
-    spFunGet<SPClassAnylizeMatchList>(url: MATCH_ANALYSE,queryParameters:queryParameters,spProCallBack: spProCallBack );
+    spFunGet<SPClassAnylizeMatchList>(url: MATCH_ANALYSE,jsonObject:SPClassAnylizeMatchList(),queryParameters:queryParameters,spProCallBack: spProCallBack );
   }
   spFunSendCode({BuildContext? context,SPClassHttpCallBack<SPClassBaseModelEntity>? spProCallBack,String? spProPhoneNumber,String? spProCodeType}) async {
     spFunGet<SPClassBaseModelEntity>(url: SEND_CODE,queryParameters:{"phone_number":spProPhoneNumber,"code_type":spProCodeType},isToast: true,spProIsLoading: true,isBaseParams: false, spProCallBack: spProCallBack ,context: context);
@@ -382,7 +382,7 @@ class SPClassApiManager extends SPClassBaseApi{
     spFunGet<SPClassBaseModelEntity>(url: EXPERT_APPLY,queryParameters:spProBodyParameters,spProCallBack: spProCallBack,isToast: true,spProIsLoading: true,isBaseParams: false,context: context );
   }
   spFunSchemeDetail({Map<String,dynamic>? queryParameters,SPClassHttpCallBack<SPClassSchemeDetailEntity>? spProCallBack,BuildContext? context}){
-    spFunGet<SPClassSchemeDetailEntity>(url: SCHEME_DETAIL,queryParameters:queryParameters,spProCallBack: spProCallBack,isToast: true,spProIsLoading: true,context: context );
+    spFunGet<SPClassSchemeDetailEntity>(url: SCHEME_DETAIL,jsonObject:SPClassSchemeDetailEntity(),queryParameters:queryParameters,spProCallBack: spProCallBack,isToast: true,spProIsLoading: true,context: context );
   }
   spFunSchemeBuy({Map<String,dynamic>? queryParameters,SPClassHttpCallBack<SPClassBaseModelEntity>? spProCallBack,BuildContext? context}){
     spFunGet<SPClassBaseModelEntity>(url: SCHEME_BUY,queryParameters:queryParameters,spProCallBack: spProCallBack,isToast: true,spProIsLoading: true,isBaseParams: true,context: context );
@@ -392,7 +392,7 @@ class SPClassApiManager extends SPClassBaseApi{
 //   }
 //
   spFunCreateOrder({Map<String,dynamic>? queryParameters,SPClassHttpCallBack<SPClassCreatOrderEntity>? spProCallBack,BuildContext? context}){
-    spFunGet<SPClassCreatOrderEntity>(url: CREATE_ORDER,queryParameters:queryParameters,spProCallBack: spProCallBack,isToast: true,spProIsLoading: true,isBaseParams: false,context: context );
+    spFunGet<SPClassCreatOrderEntity>(url: CREATE_ORDER,jsonObject: SPClassCreatOrderEntity(),queryParameters:queryParameters,spProCallBack: spProCallBack,isToast: true,spProIsLoading: true,isBaseParams: false,context: context );
   }
 //   spFunPaySdkCallback({String receipt,String isSandbox,SPClassHttpCallBack spProCallBack,BuildContext context}){
 //     spFunGet<SPClassBaseModelEntity>(url: spProPAY_SDK_CALLBACK,queryParameters:{"transaction_receipt":receipt,"pay_type_key":"ios","is_sandbox":isSandbox},spProCallBack: spProCallBack,isToast: true,spProIsLoading: true,isBaseParams: true,context: context );
@@ -417,7 +417,7 @@ class SPClassApiManager extends SPClassBaseApi{
     spFunGet<SPClassBaseModelEntity>(url: DEL_USER_MATCH,queryParameters:{"match_id":matchId,"type":"guess"},spProCallBack: spProCallBack,isToast: true,spProIsLoading: true,isBaseParams: true,context: context );
   }
   spFunExpertList({Map<String,dynamic> ?queryParameters,SPClassHttpCallBack<SPClassExpertListEntity> ?spProCallBack,spProIsLoading: false,BuildContext ?context}){
-    spFunGet<SPClassExpertListEntity>(url: EXPERT_LIST,queryParameters:queryParameters,spProCallBack: spProCallBack,isToast: spProIsLoading,spProIsLoading: spProIsLoading,isBaseParams: true,context: context );
+    spFunGet<SPClassExpertListEntity>(url: EXPERT_LIST,jsonObject: SPClassExpertListEntity(),queryParameters:queryParameters,spProCallBack: spProCallBack,isToast: spProIsLoading,spProIsLoading: spProIsLoading,isBaseParams: true,context: context );
   }
   spFunExpertInfo({Map<String,dynamic>? queryParameters,SPClassHttpCallBack<SPClassExpertInfo>? spProCallBack,BuildContext? context}){
     spFunGet<SPClassExpertInfo>(url: EXPERT_INFO,jsonObject: SPClassExpertInfo(),queryParameters:queryParameters,spProCallBack: spProCallBack,isToast: true,spProIsLoading: true,isBaseParams: true,context: context );
@@ -426,7 +426,7 @@ class SPClassApiManager extends SPClassBaseApi{
     spFunGet<SPClassBaseModelEntity>(url: SPORT_APP,queryParameters:{},spProCallBack: spProCallBack,isToast: false,spProIsLoading: false,isBaseParams: true,context: context );
   }
   Future<void>  spFunSchemeList({Map<String,dynamic> ?queryParameters,SPClassHttpCallBack<SPClassSchemeListEntity>? spProCallBack}){
-  return  spFunGet<SPClassSchemeListEntity>(url: SCHEME_LIST,queryParameters:queryParameters!,spProCallBack: spProCallBack,isToast: false,spProIsLoading: false,isBaseParams: true );
+  return  spFunGet<SPClassSchemeListEntity>(url: SCHEME_LIST,jsonObject: SPClassSchemeListEntity(),queryParameters:queryParameters!,spProCallBack: spProCallBack,isToast: false,spProIsLoading: false,isBaseParams: true );
   }
 //   spFunFutureGuessMatchList({int page,SPClassHttpCallBack spProCallBack}){
 //     spFunGet<String>(url: FUTURE_GUESS_MATCH_LIST,queryParameters:{"page":"${page.toString()}"},spProCallBack: spProCallBack,isToast: false,spProIsLoading: false,isBaseParams: true );
@@ -449,7 +449,7 @@ class SPClassApiManager extends SPClassBaseApi{
 //   }
 
   spFunShowPConfig({SPClassHttpCallBack<SPClassShowPListEntity>? spProCallBack}){
-    spFunGet<SPClassShowPListEntity>(url: SHOW_P_CONFIG,spProCallBack: spProCallBack,isToast: false,spProIsLoading: false,isBaseParams: true );
+    spFunGet<SPClassShowPListEntity>(url: SHOW_P_CONFIG,jsonObject: SPClassShowPListEntity(),spProCallBack: spProCallBack,isToast: false,spProIsLoading: false,isBaseParams: true );
   }
 
   spFunFollowExpert({bool? isFollow,String? spProExpertUid,SPClassHttpCallBack<SPClassBaseModelEntity>? spProCallBack,BuildContext? context}){
@@ -462,7 +462,7 @@ class SPClassApiManager extends SPClassBaseApi{
 //     });
 //   }
   spFunOddsHistoryList({String ?spProOddsType,String ?company,String ?spProGuessMatchId,SPClassHttpCallBack<SPClassOddsHistoryListEntity> ?spProCallBack,BuildContext ?context}){
-    spFunGet<SPClassOddsHistoryListEntity>(url: spProODDS_HISTORY_LIST,queryParameters:{"odds_type":spProOddsType,"company":company,"guess_match_id":spProGuessMatchId},spProCallBack: spProCallBack,isToast: true,spProIsLoading: true,isBaseParams: true ,context: context).then((value){
+    spFunGet<SPClassOddsHistoryListEntity>(url: spProODDS_HISTORY_LIST,jsonObject: SPClassOddsHistoryListEntity(),queryParameters:{"odds_type":spProOddsType,"company":company,"guess_match_id":spProGuessMatchId},spProCallBack: spProCallBack,isToast: true,spProIsLoading: true,isBaseParams: true ,context: context).then((value){
     });
   }
 //   spFunRecentReport({String spProRankingType,String spProExpertUid,SPClassHttpCallBack spProCallBack,BuildContext context}){
@@ -563,4 +563,7 @@ class SPClassApiManager extends SPClassBaseApi{
 //     spFunGet<T>(url: GAMEGIFT,queryParameters:{
 //       "game_id":gameId},spProCallBack: spProCallBack,context: context,isToast: true,spProIsLoading: true,isBaseParams: false,);
 //   }
+  saveInvitePhone({SPClassHttpCallBack<SPClassBaseModelEntity>? hcProCallBack,BuildContext ?context,String ?invitePhone,}){
+    spFunGet<SPClassBaseModelEntity>(url: 'sport/user/save_invite_phone',queryParameters:{"invite_phone":invitePhone,},spProCallBack: hcProCallBack,isToast: true,spProIsLoading: true,isBaseParams: true,context: context,isTimeOut: true );
+  }
 }

@@ -19,6 +19,7 @@ import 'package:changshengh5/utils/SPClassToastUtils.dart';
 import 'package:changshengh5/utils/colors.dart';
 import 'package:changshengh5/utils/common.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:html2md/html2md.dart' as html2md;
 import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:async';
@@ -755,9 +756,9 @@ class SPClassSchemeDetailPageState extends State<SPClassSchemeDetailPage> {
                       value2: SPClassStringUtils.spFunSqlitZero(SPClassStringUtils.spFunPanKouData(widget.spProSchemeDetail.scheme!.spProMidScore!).replaceAll("+", "")),
                       text3: '小',
                       value3: double.tryParse(widget.spProSchemeDetail.scheme!.spProWinOddsTwo!)!.toStringAsFixed(2),
-                      supportWhich:widget.spProSchemeDetail.scheme!.spProSupportWhich!,
-                      supportWhich2: widget.spProSchemeDetail.scheme!.spProSupportWhich2!,
-                      whichWin: widget.spProSchemeDetail.scheme!.spProWhichWin!
+                      supportWhich:widget.spProSchemeDetail.scheme!.spProSupportWhich,
+                      supportWhich2: widget.spProSchemeDetail.scheme!.spProSupportWhich2,
+                      whichWin: widget.spProSchemeDetail.scheme!.spProWhichWin
                   )
                       :
                   (widget.spProSchemeDetail.scheme!.spProPlayingWay=="让球胜负")?
@@ -768,9 +769,9 @@ class SPClassSchemeDetailPageState extends State<SPClassSchemeDetailPage> {
                     value2: SPClassStringUtils.spFunPanKouData(widget.spProSchemeDetail.scheme!.spProAddScore!),
                     text3: '主负',
                     value3: double.tryParse(widget.spProSchemeDetail.scheme!.spProWinOddsTwo!)!.toStringAsFixed(2),
-                    supportWhich:widget.spProSchemeDetail.scheme!.spProSupportWhich!,
-                    supportWhich2: widget.spProSchemeDetail.scheme!.spProSupportWhich2!,
-                    whichWin: widget.spProSchemeDetail.scheme!.spProWhichWin!
+                    supportWhich:widget.spProSchemeDetail.scheme!.spProSupportWhich,
+                    supportWhich2: widget.spProSchemeDetail.scheme!.spProSupportWhich2,
+                    whichWin: widget.spProSchemeDetail.scheme!.spProWhichWin
                   ):
                   (widget.spProSchemeDetail.scheme!.spProPlayingWay=="让分胜负"||widget.spProSchemeDetail.scheme!.spProPlayingWay=="让局胜负")?
                   guessItem(
@@ -780,9 +781,9 @@ class SPClassSchemeDetailPageState extends State<SPClassSchemeDetailPage> {
                       value2: SPClassStringUtils.spFunSqlitZero(SPClassStringUtils.spFunPanKouData(widget.spProSchemeDetail.scheme!.spProAddScore!,)),
                       text3: widget.spProSchemeDetail.scheme!.spProMatchType!.toLowerCase()=="lol" ?(widget.spProSchemeDetail.spProGuessMatch!.spProTeamTwo!):"客队",
                       value3: double.tryParse(widget.spProSchemeDetail.scheme!.spProWinOddsTwo!)!.toStringAsFixed(2),
-                      supportWhich:widget.spProSchemeDetail.scheme!.spProSupportWhich!,
-                      supportWhich2: widget.spProSchemeDetail.scheme!.spProSupportWhich2!,
-                      whichWin: widget.spProSchemeDetail.scheme!.spProWhichWin!
+                      supportWhich:widget.spProSchemeDetail.scheme!.spProSupportWhich,
+                      supportWhich2: widget.spProSchemeDetail.scheme!.spProSupportWhich2,
+                      whichWin: widget.spProSchemeDetail.scheme!.spProWhichWin
                   ) :
                   (widget.spProSchemeDetail.scheme!.spProPlayingWay=="总时长"||widget.spProSchemeDetail.scheme!.spProPlayingWay=="总击杀")?
                   guessItem(
@@ -792,9 +793,9 @@ class SPClassSchemeDetailPageState extends State<SPClassSchemeDetailPage> {
                       value2: (SPClassStringUtils.spFunSqlitZero(widget.spProSchemeDetail.scheme!.spProMidScore!)+(widget.spProSchemeDetail.scheme!.spProPlayingWay=="总时长"? "分钟":"")),
                       text3: '小于',
                       value3: double.tryParse(widget.spProSchemeDetail.scheme!.spProWinOddsTwo!)!.toStringAsFixed(2),
-                      supportWhich:widget.spProSchemeDetail.scheme!.spProSupportWhich!,
-                      supportWhich2: widget.spProSchemeDetail.scheme!.spProSupportWhich2!,
-                      whichWin: widget.spProSchemeDetail.scheme!.spProWhichWin!
+                      supportWhich:widget.spProSchemeDetail.scheme!.spProSupportWhich,
+                      supportWhich2: widget.spProSchemeDetail.scheme!.spProSupportWhich2,
+                      whichWin: widget.spProSchemeDetail.scheme!.spProWhichWin
                   ):
                   guessItem(
                       text1: widget.spProSchemeDetail.scheme!.spProMatchType!.toLowerCase()=="lol" ?widget.spProSchemeDetail.spProGuessMatch!.spProTeamOne!:"胜",
@@ -803,9 +804,9 @@ class SPClassSchemeDetailPageState extends State<SPClassSchemeDetailPage> {
                       value2: widget.spProSchemeDetail.scheme!.spProDrawOdds!,
                       text3:  widget.spProSchemeDetail.scheme!.spProMatchType!.toLowerCase()=="lol" ?widget.spProSchemeDetail.spProGuessMatch!.spProTeamTwo!:"负",
                       value3: double.tryParse(widget.spProSchemeDetail.scheme!.spProWinOddsTwo!)!.toStringAsFixed(2),
-                      supportWhich:widget.spProSchemeDetail.scheme!.spProSupportWhich!,
-                      supportWhich2: widget.spProSchemeDetail.scheme!.spProSupportWhich2!,
-                      whichWin: widget.spProSchemeDetail.scheme!.spProWhichWin!
+                      supportWhich:widget.spProSchemeDetail.scheme!.spProSupportWhich,
+                      supportWhich2: widget.spProSchemeDetail.scheme!.spProSupportWhich2,
+                      whichWin: widget.spProSchemeDetail.scheme!.spProWhichWin
                   )
                 ,),),
           ],
@@ -1020,107 +1021,124 @@ class SPClassSchemeDetailPageState extends State<SPClassSchemeDetailPage> {
   }
 
   Widget guessItem({String? text1,String? value1,String? text2,String? value2,String? text3,String? value3,String? supportWhich,String? supportWhich2,String? whichWin}){
+    if(widget.spProSchemeDetail.scheme!.spProPlayingWay!.contains("大小")){
+      if(supportWhich=='1'){
+        supportWhich='2';
+      }else if(supportWhich=='2'){
+        supportWhich='1';
+      }
+      if(supportWhich2=='1'){
+        supportWhich2='2';
+      }else if(supportWhich2=='2'){
+        supportWhich2='1';
+      }
+      if(whichWin=='1'){
+        whichWin='2';
+      }else if(whichWin=='2'){
+        whichWin='1';
+      }
+    }
     return Row(
       children: <Widget>[
         Expanded(
           child:Stack(
             children: <Widget>[
               Container(
-                height: width(43),
+                height: 43.w,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     color: supportWhich=="1"?MyColors.main1:Color(0xFFF2F2F2),
                     borderRadius: BorderRadius.all(Radius.circular(4))
                 ),
                 child:Container(
-                  height: width(43),
+                  height: 43.w,
                   width: double.infinity,
                   alignment: Alignment.center,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Text("$text1",style: TextStyle(fontSize: sp(12),color:supportWhich=="1"? Colors.white :Color(0xFF303133)),),
-                      Text("$value1",style: TextStyle(fontSize: sp(12),color:supportWhich=="1"? Colors.white : Color(0xFF303133)),),
+                      Text("$text1",style: TextStyle(fontSize: 12.sp,color:supportWhich=="1"? Colors.white :Color(0xFF303133)),),
+                      Text("$value1",style: TextStyle(fontSize: 12.sp,color:supportWhich=="1"? Colors.white : Color(0xFF303133)),),
                     ],
                   ),
                 ),
               ),
               (supportWhich=="1"||supportWhich2=="1")?Container(
-                width: width(27),
+                width: 27.w,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                    color: Color(0xFFFFB44D),
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(width(4)),bottomRight:Radius.circular(width(4)), )
+                    color:supportWhich=="1"? Color(0xFFFFB44D):Color(0xFFFF6A4C),
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(4.w),bottomRight:Radius.circular(4.w), )
                 ),
-                child: Text('主推',style: TextStyle(fontSize: sp(10),color: Colors.white),),
+                child: Text(supportWhich=="1"?'主推':'次推',style: TextStyle(fontSize: 10.sp,color: Colors.white),),
               ):Container(),
               (whichWin=="1")? Positioned(
                 bottom: 0,
                 right: 0,
                 child: Image.asset(
-                  SPClassImageUtil.spFunGetImagePath("ic_select_lab"),
-                  width: width(18),
+                  SPClassImageUtil.spFunGetImagePath("hc_select_lab"),
+                  width: 18.w,
                 ),
               ):Container(),
 
             ],
           ),
         ),
-        SizedBox(width: width(4),),
+        SizedBox(width: 4.w,),
         Expanded(
           child: Stack(
             children: <Widget>[
               Container(
-                height: width(43),
+                height: 43.w,
                 width: double.infinity,
                 child: Container(
-                  height: width(43),
+                  height: 43.w,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      color: Color(0xFFF2F2F2),
+                      color: (supportWhich=="0")?MyColors.main1:Color(0xFFF2F2F2),
                       borderRadius: BorderRadius.all(Radius.circular(4))
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Text('$text2',style: TextStyle(fontSize: sp(12),color:(supportWhich=="0"||supportWhich2=="0")? Colors.white : Color(0xFF303133)),),
-                      Text('$value2',style: TextStyle(fontSize: sp(12),color:(supportWhich=="0"||supportWhich2=="0")? Colors.white : Color(0xFF303133)),),
+                      Text('$text2',style: TextStyle(fontSize: 12.sp,color:(supportWhich=="0")? Colors.white : Color(0xFF303133)),),
+                      Text('$value2',style: TextStyle(fontSize: 12.sp,color:(supportWhich=="0")? Colors.white : Color(0xFF303133)),),
                     ],
                   ),
                 ),
               ),
               (supportWhich=="0"||supportWhich2=="0")?Container(
-                width: width(27),
+                width: 27.w,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                    color: Color(0xFFFFB44D),
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(width(4)),bottomRight:Radius.circular(width(4)), )
+                    color:supportWhich=="0"? Color(0xFFFFB44D):Color(0xFFFF6A4C),
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(4.w),bottomRight:Radius.circular(4.w), )
                 ),
-                child: Text('主推',style: TextStyle(fontSize: sp(10),color: Colors.white),),
+                child: Text(supportWhich=="0"?'主推':'次推',style: TextStyle(fontSize: 10.sp,color: Colors.white),),
               ):Container(),
               (whichWin=="0")? Positioned(
                 bottom: 0,
                 right: 0,
                 child: Image.asset(
-                  SPClassImageUtil.spFunGetImagePath("ic_select_lab"),
-                  width: width(18),
+                  SPClassImageUtil.spFunGetImagePath("hc_select_lab"),
+                  width: 18.w,
                 ),
               ):Container(),
 
             ],
           ),
         ),
-        SizedBox(width: width(4),),
+        SizedBox(width: 4.w,),
         Expanded(
           child: Stack(
             children: <Widget>[
               Container(
-                height: width(43),
+                height: 43.w,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                    color: (supportWhich=="2"||supportWhich2=="2")?MyColors.main1:Color(0xFFF2F2F2),
+                    color: (supportWhich=="2")?MyColors.main1:Color(0xFFF2F2F2),
                     borderRadius: BorderRadius.all(Radius.circular(4))
                 ),
                 child: Stack(
@@ -1128,43 +1146,35 @@ class SPClassSchemeDetailPageState extends State<SPClassSchemeDetailPage> {
                   children: <Widget>[
                     Container(
                       width: double.infinity,
-                      height: width(43),
+                      height: 43.w,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          Text("$text3",style: TextStyle(fontSize: sp(12),color:(widget.spProSchemeDetail.scheme!.spProSupportWhich=="2")? Colors.white : Color(0xFF303133)),),
-                          Text("$value3",style: TextStyle(fontSize: sp(12),color:(widget.spProSchemeDetail.scheme!.spProSupportWhich=="2")? Colors.white :Color(0xFF303133)),),
+                          Text("$text3",style: TextStyle(fontSize: 12.sp,color:supportWhich=="2"? Colors.white : Color(0xFF303133)),),
+                          Text("$value3",style: TextStyle(fontSize: 12.sp,color:supportWhich=="2"? Colors.white :Color(0xFF303133)),),
 
                         ],
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Image.asset(
-                        (whichWin=="2")? SPClassImageUtil.spFunGetImagePath("ic_select_lab"):"",
-                        width: width(18),
                       ),
                     ),
                   ],
                 ),
               ),
-              (supportWhich=="2"||supportWhich2=="2")?Container(
-                width: width(27),
+              (supportWhich=="2"||supportWhich2=='2')?Container(
+                width: 27.w,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Color(0xFFFFB44D),
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(width(4)),bottomRight:Radius.circular(width(4)), )
+                    color:supportWhich=="2"? Color(0xFFFFB44D):Color(0xFFFF6A4C),
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(4.w),bottomRight:Radius.circular(4.w), )
                 ),
-                child: Text('主推',style: TextStyle(fontSize: sp(10),color: Colors.white),),
+                child: Text(supportWhich=="2"?'主推':'次推',style: TextStyle(fontSize: 10.sp,color: Colors.white),),
               ):Container(),
               (whichWin=="2")? Positioned(
                 bottom: 0,
                 right: 0,
                 child: Image.asset(
-                  SPClassImageUtil.spFunGetImagePath("ic_select_lab"),
-                  width: width(18),
+                  SPClassImageUtil.spFunGetImagePath("hc_select_lab"),
+                  width: 18.w,
                 ),
               ):Container(),
             ],

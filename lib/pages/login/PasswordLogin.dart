@@ -31,21 +31,21 @@ class _PasswordLoginState extends State<PasswordLogin> {
   String spProPhonePwd = "";
   bool isAgree = false; //是否同意协议
   bool spProIsShowPassWord = false;
-  late VideoPlayerController _videoPlayerController;
+  // late VideoPlayerController _videoPlayerController;
   late TextEditingController _textEditingController;
 
   @override
   void initState() {
     _textEditingController = TextEditingController(text: spProPhoneNum);
 
-    _videoPlayerController =
-    VideoPlayerController.asset('assets/video/video_login.m4v')
-      ..initialize().then((_) {
-        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-        setState(() {});
-      });
-    _videoPlayerController.setLooping(true);
-    _videoPlayerController.play();
+    // _videoPlayerController =
+    // VideoPlayerController.asset('assets/video/video_login.m4v')
+    //   ..initialize().then((_) {
+    //     // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+    //     setState(() {});
+    //   });
+    // _videoPlayerController.setLooping(true);
+    // _videoPlayerController.play();
     // TODO: implement initState
     super.initState();
   }
@@ -57,22 +57,22 @@ class _PasswordLoginState extends State<PasswordLogin> {
       body: Container(
         child: Stack(
           children: <Widget>[
-            Container(
-                child: _videoPlayerController.value.isInitialized
-                    ? Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width/_videoPlayerController.value.aspectRatio,
-                  child: VideoPlayer(_videoPlayerController),
-                )
-                    : SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height)),
+            // Container(
+            //     child: _videoPlayerController.value.isInitialized
+            //         ? Container(
+            //       width: MediaQuery.of(context).size.width,
+            //       height: MediaQuery.of(context).size.width/_videoPlayerController.value.aspectRatio,
+            //       child: VideoPlayer(_videoPlayerController),
+            //     )
+            //         : SizedBox(
+            //         width: MediaQuery.of(context).size.width,
+            //         height: MediaQuery.of(context).size.height)),
             Container(
               child: Image.asset(
                 SPClassImageUtil
                     .spFunGetImagePath(
                     'login_bg'),
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
               ),
@@ -330,8 +330,8 @@ class _PasswordLoginState extends State<PasswordLogin> {
                                               .spFunPushRoute(
                                               context,
                                               SPClassVideoPhoneLoginPage(
-                                                spProVideoPlayerController:
-                                                _videoPlayerController,
+                                                // spProVideoPlayerController:
+                                                // _videoPlayerController,
                                                 spProPhoneType: 1,
                                               ));
                                         },
@@ -432,7 +432,7 @@ class _PasswordLoginState extends State<PasswordLogin> {
 
   @override
   void dispose() {
-    _videoPlayerController.dispose();
+    // _videoPlayerController.dispose();
     // TODO: implement dispose
     super.dispose();
   }

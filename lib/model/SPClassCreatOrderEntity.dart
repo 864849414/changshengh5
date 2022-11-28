@@ -10,9 +10,13 @@ class SPClassCreatOrderEntity {
   String ?spProOrderInfo;
   String ?url;
 
-	SPClassCreatOrderEntity({this.package, this.appid, this.sign, this.partnerid, this.spProPrepayid, this.spProOrderNum, this.noncestr, this.timestamp});
 
-	SPClassCreatOrderEntity.fromJson(Map<String, dynamic> json) {
+	SPClassCreatOrderEntity({Map<String, dynamic>? json}) {
+		if (json != null) {
+			fromJson(json);
+		}
+	}
+	fromJson(Map<String, dynamic> json) {
 		package = json["package"];
 		appid = json["appid"];
 		sign = json["sign"];
